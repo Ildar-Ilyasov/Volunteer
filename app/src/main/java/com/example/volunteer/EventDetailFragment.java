@@ -58,6 +58,9 @@ public class EventDetailFragment extends Fragment {
 
             // Загрузка данных о мероприятии
             loadEventDetails();
+
+            // Проверка, участвует ли пользователь в мероприятии
+            checkIfUserParticipates();
         } else {
             Toast.makeText(getContext(), "Не удалось найти данные о пользователе или мероприятии.", Toast.LENGTH_SHORT).show();
         }
@@ -93,6 +96,30 @@ public class EventDetailFragment extends Fragment {
         });
     }
 
+    private void checkIfUserParticipates() {
+        if (userId != null && eventId != null) {
+            userEventsRef.child(userId).child(eventId).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        // Если пользователь уже участвует, обновляем кнопку
+                        btnParticipate.setText("Вы участвуете");
+                        btnParticipate.setEnabled(false);
+                    } else {
+                        // Если пользователь не участвует, оставляем кнопку активной
+                        btnParticipate.setText("Участвовать");
+                        btnParticipate.setEnabled(true);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.e("EventDetailFragment", "Ошибка при проверке участия: " + error.getMessage());
+                }
+            });
+        }
+    }
+
     private void joinEvent() {
         if (userId != null && eventId != null) {
             // Создаем ссылку на путь, где сохраняются события пользователя
@@ -101,6 +128,12 @@ public class EventDetailFragment extends Fragment {
                         if (task.isSuccessful()) {
                             // Уведомление о том, что участие успешно добавлено
                             Toast.makeText(getContext(), "Вы успешно зарегистрированы на мероприятие!", Toast.LENGTH_SHORT).show();
+
+                            // Меняем текст кнопки на "Вы участвуете"
+                            btnParticipate.setText("Вы участвуете");
+
+                            // Делаем кнопку неактивной, чтобы пользователь не мог нажать её снова
+                            btnParticipate.setEnabled(false);
                         } else {
                             // Обработка ошибок при добавлении
                             Toast.makeText(getContext(), "Ошибка при регистрации.", Toast.LENGTH_SHORT).show();
