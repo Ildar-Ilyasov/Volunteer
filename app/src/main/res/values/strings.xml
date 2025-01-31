@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Volunteer</string>
+    <string name="hint_first_name">Имя</string>
+    <string name="hint_last_name">Фамилия</string>
+    <string name="hint_dob">Дата рождения</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_login">Логин</string>
+    <string name="hint_password">Пароль</string>
+    <string name="btn_register">Зарегистрироваться</string>
+    <string name="btn_login">Войти</string>
+</resources>

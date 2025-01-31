@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Фото профиля -->
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/default_profile_picture"
+        android:scaleType="centerCrop"
+        android:background="@android:color/darker_gray"
+        android:contentDescription="Profile image"
+        android:onClick="onProfileImageClick"/>
+
+    <!-- Имя пользователя -->
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@id/profile_image"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="8dp"/>
+
+    <!-- Логин -->
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Логин"
+        android:layout_below="@id/tv_name"
+        android:layout_centerHorizontal="true"/>
+
+    <!-- Блок информации -->
+    <TextView
+        android:id="@+id/tv_info_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Информация о Вас"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_below="@id/tv_login"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/tv_dob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Дата рождения: "
+        android:layout_below="@id/tv_info_title"
+        android:layout_marginTop="4dp"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/tv_registration_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Дата регистрации: "
+        android:layout_below="@id/tv_dob"
+        android:layout_alignParentStart="true"/>
+
+    <!-- Блок контактов -->
+    <TextView
+        android:id="@+id/tv_contacts_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Контакты"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_below="@id/tv_registration_date"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email: "
+        android:layout_below="@id/tv_contacts_title"
+        android:layout_alignParentStart="true"/>
+
+    <!-- Блок "Ваши мероприятия" -->
+    <TextView
+        android:id="@+id/tvEventsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ваши мероприятия"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_below="@id/tv_email"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentStart="true"/>
+
+    <!-- Список мероприятий -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewUserEvents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvEventsTitle"
+        android:layout_marginTop="8dp"/>
+</RelativeLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="profile_image" type="id" />
+    <item name="btn_add_photo" type="id" />
+    <item name="tv_login" type="id" />
+    <item name="tv_name" type="id" />
+    <item name="tv_dob" type="id" />
+    <item name="tv_registration_date" type="id" />
+    <item name="tv_email" type="id" />
+    <item name="tv_info_title" type="id" />
+    <item name="tv_contacts_title" type="id" />
+    <item name="fragment_container" type="id" />
+</resources>
