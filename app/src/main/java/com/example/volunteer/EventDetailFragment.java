@@ -95,21 +95,17 @@ public class EventDetailFragment extends Fragment {
 
     private void joinEvent() {
         if (userId != null && eventId != null) {
-            // Генерация уникального ID для записи в user_events
-            String userEventId = userEventsRef.push().getKey();
-            if (userEventId != null) {
-                // Создание записи о пользователе и его участии в мероприятии
-                userEventsRef.child(userEventId).setValue(new UserEvent(userId, eventId))
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                // Уведомление о том, что участие успешно добавлено
-                                Toast.makeText(getContext(), "Вы успешно зарегистрированы на мероприятие!", Toast.LENGTH_SHORT).show();
-                            } else {
-                                // Обработка ошибок при добавлении
-                                Toast.makeText(getContext(), "Ошибка при регистрации.", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-            }
+            // Создаем ссылку на путь, где сохраняются события пользователя
+            userEventsRef.child(userId).child(eventId).setValue(true)  // Мы используем true как значение, чтобы просто отметить участие
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            // Уведомление о том, что участие успешно добавлено
+                            Toast.makeText(getContext(), "Вы успешно зарегистрированы на мероприятие!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            // Обработка ошибок при добавлении
+                            Toast.makeText(getContext(), "Ошибка при регистрации.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
         } else {
             Toast.makeText(getContext(), "Не удалось найти данные о пользователе или мероприятии.", Toast.LENGTH_SHORT).show();
         }
