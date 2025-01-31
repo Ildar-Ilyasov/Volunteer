@@ -16,7 +16,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
-import android.widget.Button;
 
 public class MenuFragment extends Fragment {
 
@@ -24,16 +23,16 @@ public class MenuFragment extends Fragment {
     private EventAdapter eventAdapter;
     private List<Event> eventList;
     private DatabaseReference eventsRef;
-    private Button btnCreateEvent;  // Добавляем кнопку
-    private String userId;  // Добавляем userId
+    private String userId;
+
+    public MenuFragment(String userId) {
+        this.userId = userId;
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
-
-        // Получаем userId из аргументов фрагмента
-        userId = getArguments() != null ? getArguments().getString("userId") : null;
 
         // Инициализация RecyclerView
         recyclerViewEvents = view.findViewById(R.id.recyclerViewEvents);

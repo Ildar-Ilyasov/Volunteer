@@ -15,12 +15,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     private List<Event> eventList;
     private Context context;
-    private String userId;  // Добавляем userId
+    private String userId;
 
     public EventAdapter(List<Event> eventList, Context context, String userId) {
         this.eventList = eventList;
         this.context = context;
-        this.userId = userId;  // Инициализируем userId
+        this.userId = userId;
     }
 
     @NonNull
@@ -37,13 +37,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.tvDate.setText(event.getDate());
         holder.tvLocation.setText(event.getLocation());
 
-        // Обработка нажатия на элемент списка
         holder.itemView.setOnClickListener(v -> {
             // Переход на фрагмент с деталями мероприятия
             EventDetailFragment detailFragment = EventDetailFragment.newInstance(event.getId(), userId);  // Передаем eventId и userId
             FragmentTransaction transaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.contentFrame, detailFragment);  // Используем contentFrame из MainActivity
-            transaction.addToBackStack(null);  // Добавляем в стек возврата
+            transaction.replace(R.id.contentFrame, detailFragment);
+            transaction.addToBackStack(null);
             transaction.commit();
         });
     }
@@ -56,7 +55,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     public static class EventViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvDate, tvLocation;
 
-        public EventViewHolder(@NonNull View itemView) {
+        public EventViewHolder(View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvDate = itemView.findViewById(R.id.tvDate);
@@ -64,3 +63,4 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         }
     }
 }
+

@@ -1,5 +1,8 @@
 package com.example.volunteer;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
+@IgnoreExtraProperties
 public class Event {
     private String id;          // Уникальный идентификатор мероприятия
     private String title;       // Название мероприятия
@@ -12,8 +15,7 @@ public class Event {
     public Event() {}
 
     // Конструктор с параметрами
-    public Event(String id, String title, String description, String date, String location, String organizer) {
-        this.id = id;
+    public Event(String title, String description, String date, String location, String organizer) {
         this.title = title;
         this.description = description;
         this.date = date;

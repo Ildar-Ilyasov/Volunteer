@@ -19,16 +19,18 @@ public class MainActivity extends AppCompatActivity {
         Button btnProfile = findViewById(R.id.btnProfile);
         Button btnAddEvent = findViewById(R.id.btnAddEvent);  // Новая кнопка
 
-        // Загружаем экран по умолчанию (MenuFragment)
-        loadFragment(new MenuFragment());
+        // Получаем userId из Intent
+        String userId = getIntent().getStringExtra("userId");
 
-        btnMenu.setOnClickListener(v -> loadFragment(new MenuFragment()));
+        // Загружаем экран по умолчанию (MenuFragment)
+        loadFragment(new MenuFragment(userId));
+
+        btnMenu.setOnClickListener(v -> loadFragment(new MenuFragment(userId)));
         btnFeed.setOnClickListener(v -> loadFragment(new FeedFragment()));
         btnSOS.setOnClickListener(v -> loadFragment(new SosFragment()));
         btnMap.setOnClickListener(v -> loadFragment(new MapFragment()));
         btnProfile.setOnClickListener(v -> {
             // Получаем userId из Intent
-            String userId = getIntent().getStringExtra("userId");
             if (userId != null) {
                 // Создаем фрагмент и передаем userId в Bundle
                 ProfileFragment profileFragment = new ProfileFragment();
@@ -53,46 +55,5 @@ public class MainActivity extends AppCompatActivity {
                 .replace(R.id.contentFrame, fragment)
                 .addToBackStack(null)  // Добавляем в стек возврата
                 .commit();
-    }
-
-    // Остальные методы жизненного цикла активности можно оставить без изменений
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
     }
 }

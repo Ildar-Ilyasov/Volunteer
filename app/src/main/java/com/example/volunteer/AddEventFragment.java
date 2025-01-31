@@ -94,11 +94,30 @@ public class AddEventFragment extends Fragment {
             return;
         }
 
+        // Проверяем, что дата начала не позже даты окончания
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        try {
+            Calendar startCalendar = Calendar.getInstance();
+            Calendar endCalendar = Calendar.getInstance();
+
+            startCalendar.setTime(sdf.parse(startDate));
+            endCalendar.setTime(sdf.parse(endDate));
+
+            if (startCalendar.after(endCalendar)) {
+                Toast.makeText(getContext(), "Дата начала не может быть позже даты окончания.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), "Ошибка при обработке дат.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Объединяем даты в одну строку
         String dateRange = startDate + " - " + endDate;
 
         // Создаем объект мероприятия
-        Event event = new Event(eventId, title, description, dateRange, location, organizer);
+        Event event = new Event(title, description, dateRange, location, organizer);
 
         // Устанавливаем ID мероприятия
         if (eventId != null) {
@@ -119,4 +138,5 @@ public class AddEventFragment extends Fragment {
                     });
         }
     }
+
 }
