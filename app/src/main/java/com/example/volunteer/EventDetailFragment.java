@@ -107,7 +107,7 @@ public class EventDetailFragment extends Fragment {
                         btnParticipate.setEnabled(false);
                     } else {
                         // Если пользователь не участвует, оставляем кнопку активной
-                        btnParticipate.setText("Участвовать");
+                        btnParticipate.setText("Подать заявку");
                         btnParticipate.setEnabled(true);
                     }
                 }
