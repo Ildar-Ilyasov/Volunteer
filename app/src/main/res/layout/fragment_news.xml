@@ -2,23 +2,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
+
     <TextView
-        android:id="@+id/tvEventTitle"
+        android:id="@+id/tvNewsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Мероприятия"
+        android:text="Новости"
         android:textSize="24sp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"/>
-    <!-- RecyclerView для списка мероприятий -->
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewEvents"
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/tvEventTitle"
-        android:paddingBottom="16dp" />
-
-    <!-- Кнопка "Создать мероприятие" -->
-
-
+        android:layout_below="@id/tvNewsTitle"
+        android:padding="8dp"/>
 </RelativeLayout>

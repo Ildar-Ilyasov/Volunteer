@@ -3,16 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:padding="20dp">
+    android:padding="16dp"
+    android:gravity="center_horizontal"> <!-- Центрируем содержимое по горизонтали -->
+
+    <TextView
+        android:id="@+id/tvNewsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Экстренные вызовы"
+        android:textSize="24sp"
+        android:gravity="center" /> <!-- Центрируем текст внутри TextView -->
 
     <Button
         android:id="@+id/policeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Позвонить в полицию"
-        android:background="#FF4444"
-        android:textColor="#FFFFFF"
         android:padding="10dp"
         android:layout_marginBottom="10dp"/>
 
@@ -21,8 +28,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Позвонить в скорую"
-        android:background="#FF8800"
-        android:textColor="#FFFFFF"
         android:padding="10dp"
         android:layout_marginBottom="10dp"/>
 
@@ -31,8 +36,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Позвонить пожарным"
-        android:background="#FF0000"
-        android:textColor="#FFFFFF"
         android:padding="10dp"/>
-</LinearLayout>
 
+</LinearLayout>

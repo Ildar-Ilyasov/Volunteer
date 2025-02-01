@@ -65,5 +65,11 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="Создать" />
+        <Button
+            android:id="@+id/btnNews"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Новости" />
     </LinearLayout>
 </RelativeLayout>
