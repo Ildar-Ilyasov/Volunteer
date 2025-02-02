@@ -4,16 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:gravity="center_horizontal"> <!-- Центрируем содержимое по горизонтали -->
+    android:gravity="center_horizontal">
 
     <TextView
-        android:id="@+id/tvNewsTitle"
+        android:id="@+id/tvEmergencyCallsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Экстренные вызовы"
         android:textSize="24sp"
-        android:gravity="center" /> <!-- Центрируем текст внутри TextView -->
+        android:gravity="center" />
 
     <Button
         android:id="@+id/policeButton"
@@ -36,6 +36,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Позвонить пожарным"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/gasButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Позвонить в газовую службу"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/rescueButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Позвонить в службу спасения"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/infoButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Позвонить в справочную службу"
         android:padding="10dp"/>
 
 </LinearLayout>

@@ -21,10 +21,16 @@ public class SosFragment extends Fragment {
         Button policeButton = view.findViewById(R.id.policeButton);
         Button medicsButton = view.findViewById(R.id.medicsButton);
         Button fireButton = view.findViewById(R.id.fireButton);
+        Button gasButton = view.findViewById(R.id.gasButton);
+        Button rescueButton = view.findViewById(R.id.rescueButton);
+        Button infoButton = view.findViewById(R.id.infoButton);
 
         policeButton.setOnClickListener(v -> makeEmergencyCall("102"));
         medicsButton.setOnClickListener(v -> makeEmergencyCall("103"));
         fireButton.setOnClickListener(v -> makeEmergencyCall("101"));
+        gasButton.setOnClickListener(v -> makeEmergencyCall("104"));
+        rescueButton.setOnClickListener(v -> makeEmergencyCall("112"));
+        infoButton.setOnClickListener(v -> makeEmergencyCall("109"));
 
         return view;
     }
@@ -35,4 +41,3 @@ public class SosFragment extends Fragment {
         startActivity(intent);
     }
 }
-
