@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="Позвонить пожарным"
         android:padding="10dp"
-        android:backgroundTint="@color/orange"
+        android:backgroundTint="@color/goal"
         android:drawableLeft="@drawable/fire"
         android:drawableRight="@drawable/fire"
         android:textColor="@color/white"/>
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:text="Позвонить в полицию"
         android:padding="10dp"
-        android:backgroundTint="@color/orange"
+        android:backgroundTint="@color/goal"
         android:textColor="@color/white"
         android:drawableLeft="@drawable/police"
         android:drawableRight="@drawable/police"/>
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:text="Позвонить в скорую"
         android:padding="10dp"
-        android:backgroundTint="@color/orange"
+        android:backgroundTint="@color/goal"
         android:drawableLeft="@drawable/medic"
         android:drawableRight="@drawable/medic"
         android:textColor="@color/white"/>
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:text="Позвонить в газовую службу"
         android:padding="10dp"
-        android:backgroundTint="@color/orange"
+        android:backgroundTint="@color/goal"
         android:drawableLeft="@drawable/gas"
         android:drawableRight="@drawable/gas"
         android:textColor="@color/white"/>
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:text="Позвонить в справочную службу"
         android:padding="10dp"
-        android:backgroundTint="@color/orange"
+        android:backgroundTint="@color/goal"
         android:drawableLeft="@drawable/info"
         android:drawableRight="@drawable/info"
         android:textColor="@color/white"/>
@@ -80,7 +80,7 @@
         android:text="Позвонить в службу спасения"
         android:padding="10dp"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/orange"
+        android:backgroundTint="@color/goal"
         android:drawableLeft="@drawable/rescue"
         android:drawableRight="@drawable/rescue"
         android:textColor="@color/white"/>
