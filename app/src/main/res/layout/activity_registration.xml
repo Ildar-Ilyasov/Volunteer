@@ -2,8 +2,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#FFFFFF"
+    android:gravity="top"> <!-- Центрирование содержимого по вертикали в верхней части экрана -->
 
+    <!-- Заголовок Регистрация -->
+    <TextView
+        android:id="@+id/tvRegistrationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Регистрация"
+        android:textSize="24sp"
+        android:textColor="@color/orange"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Поле для имени -->
     <EditText
         android:id="@+id/etFirstName"
         android:layout_width="match_parent"
@@ -11,16 +26,22 @@
         android:minHeight="48dp"
         android:hint="@string/hint_first_name"
         android:inputType="textPersonName"
-        android:autofillHints="name" />
+        android:autofillHints="name"
+        android:backgroundTint="@color/orange"
+        android:textColorHint="@color/orange"/>
 
+    <!-- Поле для фамилии -->
     <EditText
         android:id="@+id/etLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:hint="@string/hint_last_name"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:backgroundTint="@color/orange"
+        android:textColorHint="@color/orange"/>
 
+    <!-- Поле для даты рождения -->
     <EditText
         android:id="@+id/etDob"
         android:layout_width="match_parent"
@@ -28,8 +49,11 @@
         android:minHeight="48dp"
         android:hint="@string/hint_dob"
         android:inputType="date"
-        android:focusable="false" />
+        android:focusable="false"
+        android:backgroundTint="@color/orange"
+        android:textColorHint="@color/orange"/>
 
+    <!-- Поле для email -->
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
@@ -37,16 +61,22 @@
         android:minHeight="48dp"
         android:hint="@string/hint_email"
         android:inputType="textEmailAddress"
-        android:autofillHints="emailAddress" />
+        android:autofillHints="emailAddress"
+        android:backgroundTint="@color/orange"
+        android:textColorHint="@color/orange"/>
 
+    <!-- Поле для логина -->
     <EditText
         android:id="@+id/etLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:hint="@string/hint_login"
-        android:inputType="text" />
+        android:inputType="text"
+        android:backgroundTint="@color/orange"
+        android:textColorHint="@color/orange"/>
 
+    <!-- Поле для пароля -->
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
@@ -54,14 +84,19 @@
         android:minHeight="48dp"
         android:hint="@string/hint_password"
         android:inputType="textPassword"
-        android:autofillHints="password" />
+        android:autofillHints="password"
+        android:backgroundTint="@color/orange"
+        android:textColorHint="@color/orange"/>
 
+    <!-- Кнопка регистрации -->
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:text="@string/btn_register"
-        android:padding="8dp" />
-
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/white"
+        android:padding="8dp"
+        android:layout_marginTop="24dp" />
 </LinearLayout>

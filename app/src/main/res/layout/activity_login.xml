@@ -2,7 +2,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/appIcon"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/icon_application"
+        android:layout_marginBottom="24dp" />
 
     <EditText
         android:id="@+id/etLogin"
@@ -10,7 +19,9 @@
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:hint="@string/hint_login"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:backgroundTint="@color/orange"
+        android:textColorHint="@color/orange"/>
 
     <EditText
         android:id="@+id/etPassword"
@@ -18,18 +29,26 @@
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:hint="@string/hint_password"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:backgroundTint="@color/orange"
+        android:textColorHint="@color/orange"/>
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_login" />
+        android:text="@string/btn_login"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/white"
+        android:layout_marginTop="12dp"/>
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/btn_register" />
+        android:text="@string/btn_register"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/white"
+        android:layout_marginTop="8dp"/>
 
 </LinearLayout>

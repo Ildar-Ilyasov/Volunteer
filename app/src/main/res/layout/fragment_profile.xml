@@ -10,11 +10,9 @@
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/default_profile_picture"
+        android:src="@drawable/icon_application"
         android:scaleType="centerCrop"
-        android:background="@android:color/darker_gray"
-        android:contentDescription="Profile image"
-        android:onClick="onProfileImageClick"/>
+        android:contentDescription="Profile image"/>
 
     <!-- Имя пользователя -->
     <TextView

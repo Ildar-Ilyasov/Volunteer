@@ -2,6 +2,8 @@ package com.example.volunteer;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -12,13 +14,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnMenu = findViewById(R.id.btnMenu);
-        Button btnFeed = findViewById(R.id.btnFeed);
-        Button btnSOS = findViewById(R.id.btnSOS);
-        Button btnMap = findViewById(R.id.btnMap);
-        Button btnProfile = findViewById(R.id.btnProfile);
-        Button btnAddEvent = findViewById(R.id.btnAddEvent);
-        Button btnNews = findViewById(R.id.btnNews);
+        ImageButton btnMenu = findViewById(R.id.btnMenu);
+        ImageButton btnFeed = findViewById(R.id.btnFeed);
+        ImageButton btnSOS = findViewById(R.id.btnSOS);
+        ImageButton btnMap = findViewById(R.id.btnMap);
+        ImageButton btnProfile = findViewById(R.id.btnProfile);
+        //Button btnAddEvent = findViewById(R.id.btnAddEvent);
+        //Button btnNews = findViewById(R.id.btnNews);
 
         String userId = getIntent().getStringExtra("userId");
         loadFragment(new MenuFragment(userId));
@@ -36,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
                 loadFragment(profileFragment);
             }
         });
-        btnAddEvent.setOnClickListener(v -> loadFragment(new AddEventFragment()));
-        btnNews.setOnClickListener(v -> loadFragment(new AddNewsFragment()));
+        //btnAddEvent.setOnClickListener(v -> loadFragment(new AddEventFragment()));
+        //btnNews.setOnClickListener(v -> loadFragment(new AddNewsFragment()));
     }
 
     private void loadFragment(Fragment fragment) {

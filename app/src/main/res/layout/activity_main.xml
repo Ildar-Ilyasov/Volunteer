@@ -18,58 +18,55 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:background="#EEEEEE"
-        android:padding="5dp"
-        android:gravity="center">
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <Button
+        <ImageButton
             android:id="@+id/btnMenu"
             android:layout_width="0dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Меню" />
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Меню"
+            android:src="@drawable/menu" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btnFeed"
             android:layout_width="0dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Лента" />
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Лента"
+            android:src="@drawable/news" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btnSOS"
             android:layout_width="0dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="SOS"/>
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="SOS"
+            android:src="@drawable/sos" />
 
-        <Button
+        <!-- Замена кнопки на ImageButton для карт -->
+        <ImageButton
             android:id="@+id/btnMap"
             android:layout_width="0dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Карты" />
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Карты"
+            android:src="@drawable/map" />
 
-        <Button
+        <ImageButton
             android:id="@+id/btnProfile"
             android:layout_width="0dp"
+            android:layout_height="60dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Профиль" />
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Профиль"
+            android:src="@drawable/profile" />
 
-        <!-- Новая кнопка для добавления мероприятия -->
-        <Button
-            android:id="@+id/btnAddEvent"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Создать" />
-        <Button
-            android:id="@+id/btnNews"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Новости" />
     </LinearLayout>
-</RelativeLayout>
+    </RelativeLayout>
