@@ -9,7 +9,6 @@
         android:layout_height="wrap_content"
         android:text="Мероприятия"
         android:textSize="24sp"
-
         android:textStyle="bold"
         android:textColor="@color/orange"
         android:layout_centerHorizontal="true"
