@@ -1,6 +1,7 @@
 package com.example.volunteer;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,16 +50,27 @@ public class NewsFragment extends Fragment {
                 newsList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     News news = dataSnapshot.getValue(News.class);
-                    newsList.add(news);
+                    if (news != null) {
+                        // Логирование данных
+                        Log.d("NewsFragment", "Loaded news: " + news.getTitle() + ", publicationDate: " + news.getPublication_Date());
+                        if (news.getImageUrl() != null && !news.getImageUrl().isEmpty()) {
+                            newsList.add(news);
+                        }
+                    }
                 }
                 newsAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                // Логирование ошибок
+                Log.e("NewsFragment", "Error loading news: " + error.getMessage());
             }
         });
     }
+
+
+
 
     private void openNewsDetail(News news) {
         NewsDetailFragment newsDetailFragment = new NewsDetailFragment();

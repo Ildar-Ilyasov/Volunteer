@@ -45,7 +45,9 @@ public class AddNewsFragment extends Fragment {
         }
 
         String newsId = databaseReference.push().getKey();
-        News news = new News(newsId, title, content);
+        String imageUrl = "";
+        String publication_date = "";
+        News news = new News(newsId, title, content, imageUrl, publication_date);
         databaseReference.child(newsId).setValue(news)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(getActivity(), "Новость опубликована", Toast.LENGTH_SHORT).show();
@@ -53,4 +55,5 @@ public class AddNewsFragment extends Fragment {
                 })
                 .addOnFailureListener(e -> Toast.makeText(getActivity(), "Ошибка: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
+
 }

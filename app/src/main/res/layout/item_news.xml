@@ -6,6 +6,12 @@
     android:elevation="2dp"
     android:padding="8dp">
 
+    <ImageView
+        android:id="@+id/newsImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop" />
+
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="match_parent"
@@ -14,4 +20,13 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/orange"/>
+
+    <!-- Добавьте TextView для даты публикации -->
+    <TextView
+        android:id="@+id/tvPublicationDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"/>
 </LinearLayout>
