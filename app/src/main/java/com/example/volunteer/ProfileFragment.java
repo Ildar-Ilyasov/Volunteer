@@ -77,6 +77,7 @@ public class ProfileFragment extends Fragment {
                     if (user != null) {
                         // Отображаем данные пользователя
                         tvName.setText(user.getFirstName() + " " + user.getLastName());
+                        tvName.setTextColor(getResources().getColor(R.color.orange)); // Оранжевый цвет для имени и фамилии
                         tvLogin.setText("Логин: " + user.getLogin());
                         tvDob.setText("Дата рождения: " + user.getDob());
                         tvRegistrationDate.setText("Дата регистрации: " + user.getRegistrationDate());

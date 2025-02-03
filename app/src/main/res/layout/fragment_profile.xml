@@ -1,7 +1,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:paddingTop="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingBottom="0dp"
+    android:background="#FFFFFF">
 
     <!-- Фото профиля -->
     <ImageView
@@ -20,8 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         android:layout_below="@id/profile_image"
         android:layout_centerHorizontal="true"
         android:paddingTop="8dp"/>
@@ -32,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Логин"
+        android:textColor="@color/gray"
         android:layout_below="@id/tv_name"
         android:layout_centerHorizontal="true"/>
 
@@ -43,6 +49,7 @@
         android:text="Информация о Вас"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="@color/orange"
         android:layout_below="@id/tv_login"
         android:layout_marginTop="16dp"
         android:layout_alignParentStart="true"/>
@@ -52,6 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Дата рождения: "
+        android:textColor="@color/black"
         android:layout_below="@id/tv_info_title"
         android:layout_marginTop="4dp"
         android:layout_alignParentStart="true"/>
@@ -61,6 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Дата регистрации: "
+        android:textColor="@color/black"
         android:layout_below="@id/tv_dob"
         android:layout_alignParentStart="true"/>
 
@@ -72,6 +81,7 @@
         android:text="Контакты"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="@color/orange"
         android:layout_below="@id/tv_registration_date"
         android:layout_marginTop="16dp"
         android:layout_alignParentStart="true"/>
@@ -81,6 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Email: "
+        android:textColor="@color/black"
         android:layout_below="@id/tv_contacts_title"
         android:layout_alignParentStart="true"/>
 
@@ -92,6 +103,7 @@
         android:text="Ваши мероприятия"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:textColor="@color/orange"
         android:layout_below="@id/tv_email"
         android:layout_marginTop="24dp"
         android:layout_alignParentStart="true"/>
@@ -103,4 +115,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tvEventsTitle"
         android:layout_marginTop="8dp"/>
+
 </RelativeLayout>

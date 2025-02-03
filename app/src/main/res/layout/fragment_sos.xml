@@ -4,7 +4,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:background="@color/white">
 
     <TextView
         android:id="@+id/tvEmergencyCallsTitle"
@@ -13,23 +14,9 @@
         android:layout_marginTop="16dp"
         android:text="Экстренные вызовы"
         android:textSize="24sp"
-        android:gravity="center" />
-
-    <Button
-        android:id="@+id/policeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Позвонить в полицию"
-        android:padding="10dp"
-        android:layout_marginBottom="10dp"/>
-
-    <Button
-        android:id="@+id/medicsButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Позвонить в скорую"
-        android:padding="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:textStyle="bold"
+        android:textColor="@color/orange"
+        android:gravity="center"/>
 
     <Button
         android:id="@+id/fireButton"
@@ -37,7 +24,32 @@
         android:layout_height="wrap_content"
         android:text="Позвонить пожарным"
         android:padding="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:backgroundTint="@color/orange"
+        android:drawableLeft="@drawable/fire"
+        android:drawableRight="@drawable/fire"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/policeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Позвонить в полицию"
+        android:padding="10dp"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/white"
+        android:drawableLeft="@drawable/police"
+        android:drawableRight="@drawable/police"/>
+
+    <Button
+        android:id="@+id/medicsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Позвонить в скорую"
+        android:padding="10dp"
+        android:backgroundTint="@color/orange"
+        android:drawableLeft="@drawable/medic"
+        android:drawableRight="@drawable/medic"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/gasButton"
@@ -45,7 +57,21 @@
         android:layout_height="wrap_content"
         android:text="Позвонить в газовую службу"
         android:padding="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:backgroundTint="@color/orange"
+        android:drawableLeft="@drawable/gas"
+        android:drawableRight="@drawable/gas"
+        android:textColor="@color/white"/>
+
+    <Button
+        android:id="@+id/infoButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Позвонить в справочную службу"
+        android:padding="10dp"
+        android:backgroundTint="@color/orange"
+        android:drawableLeft="@drawable/info"
+        android:drawableRight="@drawable/info"
+        android:textColor="@color/white"/>
 
     <Button
         android:id="@+id/rescueButton"
@@ -53,13 +79,10 @@
         android:layout_height="wrap_content"
         android:text="Позвонить в службу спасения"
         android:padding="10dp"
-        android:layout_marginBottom="10dp"/>
-
-    <Button
-        android:id="@+id/infoButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Позвонить в справочную службу"
-        android:padding="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/orange"
+        android:drawableLeft="@drawable/rescue"
+        android:drawableRight="@drawable/rescue"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

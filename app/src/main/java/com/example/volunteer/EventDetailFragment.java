@@ -1,5 +1,7 @@
 package com.example.volunteer;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -102,13 +104,15 @@ public class EventDetailFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
-                        // Если пользователь уже участвует, обновляем кнопку
+                        // Если пользователь участвует
                         btnParticipate.setText("Вы участвуете");
                         btnParticipate.setEnabled(false);
+                        btnParticipate.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY)); // Серый цвет
                     } else {
-                        // Если пользователь не участвует, оставляем кнопку активной
+                        // Если не участвует
                         btnParticipate.setText("Принять участие");
                         btnParticipate.setEnabled(true);
+                        btnParticipate.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.orange))); // Оранжевый цвет
                     }
                 }
 
@@ -122,25 +126,18 @@ public class EventDetailFragment extends Fragment {
 
     private void joinEvent() {
         if (userId != null && eventId != null) {
-            // Создаем ссылку на путь, где сохраняются события пользователя
-            userEventsRef.child(userId).child(eventId).setValue(true)  // Мы используем true как значение, чтобы просто отметить участие
+            userEventsRef.child(userId).child(eventId).setValue(true)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            // Уведомление о том, что участие успешно добавлено
-                            Toast.makeText(getContext(), "Вы успешно зарегистрированы на мероприятие!", Toast.LENGTH_SHORT).show();
-
-                            // Меняем текст кнопки на "Вы участвуете"
+                            Toast.makeText(getContext(), "Вы успешно зарегистрированы!", Toast.LENGTH_SHORT).show();
                             btnParticipate.setText("Вы участвуете");
-
-                            // Делаем кнопку неактивной, чтобы пользователь не мог нажать её снова
                             btnParticipate.setEnabled(false);
+                            btnParticipate.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY)); // Серый цвет
                         } else {
-                            // Обработка ошибок при добавлении
                             Toast.makeText(getContext(), "Ошибка при регистрации.", Toast.LENGTH_SHORT).show();
                         }
                     });
-        } else {
-            Toast.makeText(getContext(), "Не удалось найти данные о пользователе или мероприятии.", Toast.LENGTH_SHORT).show();
         }
     }
+
 }
