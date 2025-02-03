@@ -9,6 +9,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -34,7 +36,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper();
 
-        // Обработчик для выбора даты через календарь
         etDob.setOnClickListener(v -> showDatePickerDialog());
 
         btnRegister.setOnClickListener(v -> {
@@ -45,7 +46,6 @@ public class RegistrationActivity extends AppCompatActivity {
             String login = etLogin.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
 
-            // Проверка на пустые поля
             if (firstName.isEmpty()) {
                 etFirstName.setError("Это поле не может быть пустым");
                 return;
@@ -71,26 +71,24 @@ public class RegistrationActivity extends AppCompatActivity {
                 return;
             }
 
-            // Преобразуем строку даты в объект Date
-            Date dob = null;
+            Date dob;
             try {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-                dob = sdf.parse(dobString); // Преобразуем строку в объект Date
+                dob = sdf.parse(dobString);
             } catch (Exception e) {
                 e.printStackTrace();
                 Toast.makeText(RegistrationActivity.this, "Неверный формат даты", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Преобразуем объект Date обратно в строку для сохранения в Firebase
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             String dobFormatted = sdf.format(dob);
 
-            // Регистрация пользователя
-            dbHelper.registerUser(firstName, lastName, dobFormatted, email, login, password);
+            String hashedPassword = hashPassword(password);
+
+            dbHelper.registerUser(firstName, lastName, dobFormatted, email, login, hashedPassword);
             Toast.makeText(RegistrationActivity.this, "Регистрация успешна", Toast.LENGTH_SHORT).show();
 
-            // Переход на экран логина после успешной регистрации
             Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
@@ -105,10 +103,24 @@ public class RegistrationActivity extends AppCompatActivity {
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                 (view, year1, monthOfYear, dayOfMonth) -> {
-                    // Форматируем выбранную дату в нужный формат
                     String selectedDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year1;
                     etDob.setText(selectedDate);
                 }, year, month, day);
         datePickerDialog.show();
+    }
+
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            byte[] hash = md.digest(password.getBytes());
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                hexString.append(String.format("%02x", b));
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

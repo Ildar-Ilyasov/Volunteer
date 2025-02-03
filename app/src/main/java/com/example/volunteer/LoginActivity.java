@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -31,22 +33,25 @@ public class LoginActivity extends AppCompatActivity {
             String login = etLogin.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
 
-            // Проверка на пустые поля
             if (login.isEmpty() || password.isEmpty()) {
                 Toast.makeText(LoginActivity.this, "Заполните все поля", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Проверка пользователя в базе данных
-            dbHelper.checkUser(login, password, new DatabaseHelper.OnLoginCheckListener() {
+            String hashedPassword = hashPassword(password);
+            if (hashedPassword == null) {
+                Toast.makeText(LoginActivity.this, "Ошибка при хешировании пароля", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            dbHelper.checkUser(login, hashedPassword, new DatabaseHelper.OnLoginCheckListener() {
                 @Override
-                public void onLoginSuccess(String userId) {  // Получаем userId (login)
+                public void onLoginSuccess(String userId) {
                     Toast.makeText(LoginActivity.this, "Вход выполнен успешно", Toast.LENGTH_SHORT).show();
                     Log.d("LoginActivity", "Пользователь успешно вошел: " + login);
 
-                    // Передаем userId в MainActivity
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra("userId", userId); // Передаем userId
+                    intent.putExtra("userId", userId);
                     startActivity(intent);
                     finish();
                 }
@@ -67,10 +72,24 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         btnRegister.setOnClickListener(v -> {
-            // Переход на экран регистрации
             Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
             startActivity(intent);
         });
     }
-}
 
+    // Метод для хеширования пароля (SHA-512)
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            byte[] hash = md.digest(password.getBytes());
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : hash) {
+                hexString.append(String.format("%02x", b));
+            }
+            return hexString.toString();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+}
