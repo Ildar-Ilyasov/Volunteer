@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FFA500</color>
     <color name="gray">#BDBDBD</color>
+    <color name="goal">#42AAFF</color>
 </resources>

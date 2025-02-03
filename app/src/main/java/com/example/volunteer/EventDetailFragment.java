@@ -112,7 +112,7 @@ public class EventDetailFragment extends Fragment {
                         // Если не участвует
                         btnParticipate.setText("Принять участие");
                         btnParticipate.setEnabled(true);
-                        btnParticipate.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.orange))); // Оранжевый цвет
+                        btnParticipate.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.goal))); // Оранжевый цвет
                     }
                 }
 

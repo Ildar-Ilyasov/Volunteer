@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Принять участие"
-            android:backgroundTint="@color/orange"
+            android:backgroundTint="@color/goal"
             android:textColor="@color/white"
             android:layout_marginTop="24dp"
             android:layout_gravity="center"/> <!-- Центрирование только кнопки -->
