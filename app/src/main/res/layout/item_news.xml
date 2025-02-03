@@ -21,12 +21,13 @@
         android:textStyle="bold"
         android:textColor="@color/orange"/>
 
-    <!-- Добавьте TextView для даты публикации -->
+    <!-- Добавьте TextView для даты публикации, выровненный справа -->
     <TextView
         android:id="@+id/tvPublicationDate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
         android:textSize="14sp"
-        android:textColor="@android:color/darker_gray"/>
+        android:textColor="@android:color/darker_gray"
+        android:layout_gravity="end"/>
 </LinearLayout>

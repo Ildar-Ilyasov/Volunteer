@@ -48,7 +48,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
                     .load(imageUrl)
                     .into(holder.newsImage);
         } else {
-            holder.newsImage.setImageResource(R.drawable.placeholder_image);
+            // В случае, если ImageUrl пустой, подставляем изображение по умолчанию
+            holder.newsImage.setImageResource(R.drawable.placeholder_image);  // Поставьте свой ресурс по умолчанию
         }
 
         holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(news));

@@ -19,6 +19,25 @@
             android:textColor="@color/orange"
             android:paddingBottom="8dp"/>
 
+        <!-- Добавлен ImageView для фотографии -->
+        <ImageView
+            android:id="@+id/newsImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="News Image"/>
+
+        <!-- Добавлен TextView для даты публикации -->
+        <TextView
+            android:id="@+id/tvPublicationDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:textSize="14sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_gravity="end"/>
+
         <TextView
             android:id="@+id/tvDetailContent"
             android:layout_width="match_parent"
