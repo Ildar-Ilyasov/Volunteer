@@ -143,10 +143,13 @@ public class EventDetailFragment extends Fragment {
     }
     private void openChatFragment() {
         ChatFragment chatFragment = new ChatFragment();
+        Bundle args = new Bundle();
+        args.putString("eventId", eventId); // Передаем eventId
+        args.putString("userId", userId);   // Передаем userId
+        chatFragment.setArguments(args);    // Устанавливаем аргументы
         getParentFragmentManager().beginTransaction()
                 .replace(R.id.contentFrame, chatFragment)
                 .addToBackStack(null)
                 .commit();
     }
-
 }
