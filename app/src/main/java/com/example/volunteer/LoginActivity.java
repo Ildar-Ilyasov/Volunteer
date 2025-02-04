@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
             dbHelper.checkUser(login, hashedPassword, new DatabaseHelper.OnLoginCheckListener() {
                 @Override
                 public void onLoginSuccess(String userId) {
-                    Toast.makeText(LoginActivity.this, "Вход выполнен успешно", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoginActivity.this, "Вход выполнен успешно", Toast.LENGTH_SHORT).show();
                     Log.d("LoginActivity", "Пользователь успешно вошел: " + login);
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);

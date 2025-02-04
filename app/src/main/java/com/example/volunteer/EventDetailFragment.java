@@ -131,7 +131,7 @@ public class EventDetailFragment extends Fragment {
             userEventsRef.child(userId).child(eventId).setValue(true)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(getContext(), "Вы успешно зарегистрированы!", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getContext(), "Вы успешно зарегистрированы!", Toast.LENGTH_SHORT).show();
                             btnParticipate.setText("Вы участвуете");
                             btnParticipate.setEnabled(false);
                             btnParticipate.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY)); // Серый цвет
