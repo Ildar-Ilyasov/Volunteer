@@ -71,5 +71,15 @@
             android:layout_marginTop="24dp"
             android:layout_gravity="center"/> <!-- Центрирование только кнопки -->
 
+        <Button
+            android:id="@+id/btnOpenChat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Открыть чат"
+            android:backgroundTint="@color/goal"
+            android:textColor="@color/white"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"/>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

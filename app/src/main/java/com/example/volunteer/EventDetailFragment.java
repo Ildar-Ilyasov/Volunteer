@@ -48,6 +48,7 @@ public class EventDetailFragment extends Fragment {
         tvLocation = view.findViewById(R.id.tvLocation);
         tvOrganizer = view.findViewById(R.id.tvOrganizer);
         btnParticipate = view.findViewById(R.id.btnParticipate);
+        Button btnOpenChat = view.findViewById(R.id.btnOpenChat);
 
         // Получаем eventId и userId из аргументов
         eventId = getArguments() != null ? getArguments().getString("eventId") : null;
@@ -69,6 +70,7 @@ public class EventDetailFragment extends Fragment {
 
         // Обработчик нажатия на кнопку "Участвовать"
         btnParticipate.setOnClickListener(v -> joinEvent());
+        btnOpenChat.setOnClickListener(v -> openChatFragment());
 
         return view;
     }
@@ -138,6 +140,13 @@ public class EventDetailFragment extends Fragment {
                         }
                     });
         }
+    }
+    private void openChatFragment() {
+        ChatFragment chatFragment = new ChatFragment();
+        getParentFragmentManager().beginTransaction()
+                .replace(R.id.contentFrame, chatFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
 }
