@@ -19,6 +19,18 @@
         android:contentDescription="Profile image"/>
 
     <!-- Имя пользователя -->
+
+    <ImageButton
+        android:id="@+id/btnEditProfile"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/icon_edit"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Редактировать профиль"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"/>
+
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="wrap_content"

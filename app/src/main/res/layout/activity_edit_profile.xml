@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical">
+
+    <!-- Кнопка назад -->
+    <ImageButton
+        android:id="@+id/icon_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_back"
+        android:contentDescription="Назад"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Подпись для имени -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Имя"
+        android:layout_marginBottom="8dp"
+        android:textSize="16sp"
+        android:textColor="@color/orange"/>
+
+    <EditText
+        android:id="@+id/etFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите имя" />
+
+    <!-- Подпись для фамилии -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Фамилия"
+        android:layout_marginBottom="8dp"
+        android:textSize="16sp"
+        android:textColor="@color/orange"/>
+
+    <EditText
+        android:id="@+id/etLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите фамилию" />
+
+    <!-- Подпись для даты рождения -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Дата рождения"
+        android:layout_marginBottom="8dp"
+        android:textSize="16sp"
+        android:textColor="@color/orange"/>
+
+    <EditText
+        android:id="@+id/etDob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите дату рождения"
+        android:focusable="false"
+        android:clickable="true" />
+
+    <!-- Подпись для email -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:layout_marginBottom="8dp"
+        android:textSize="16sp"
+        android:textColor="@color/orange"/>
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Введите email" />
+
+    <!-- Кнопка сохранить -->
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Сохранить"
+        android:textColor="@color/white"
+        android:background="@color/orange"/>
+
+</LinearLayout>

@@ -1,9 +1,11 @@
 package com.example.volunteer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +19,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
+import android.app.Activity;
+
 
 public class ProfileFragment extends Fragment {
 
@@ -39,6 +43,7 @@ public class ProfileFragment extends Fragment {
         tvRegistrationDate = view.findViewById(R.id.tv_registration_date);
         tvEmail = view.findViewById(R.id.tv_email);
         recyclerViewUserEvents = view.findViewById(R.id.recyclerViewUserEvents);
+        ImageButton btnEditProfile = view.findViewById(R.id.btnEditProfile); // Кнопка редактирования
 
         // Устанавливаем значения по умолчанию
         tvName.setText("Загружается...");
@@ -64,6 +69,15 @@ public class ProfileFragment extends Fragment {
             loadUserData();
             loadUserEvents();
         }
+
+        // Открытие окна редактирования профиля
+        btnEditProfile.setOnClickListener(v -> {
+            if (userId != null) {
+                Intent intent = new Intent(getActivity(), EditProfileActivity.class);
+                intent.putExtra("userId", userId);
+                startActivityForResult(intent, 1);  // Добавляем requestCode
+            }
+        });
 
         return view;
     }
@@ -130,4 +144,24 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
+
+    // Обрабатываем данные, которые возвращаются из EditProfileActivity
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            // Получаем обновленные данные из Intent
+            String firstName = data.getStringExtra("firstName");
+            String lastName = data.getStringExtra("lastName");
+            String dob = data.getStringExtra("dob");
+            String email = data.getStringExtra("email");
+
+            // Обновляем UI в ProfileFragment
+            tvName.setText(firstName + " " + lastName);
+            tvDob.setText("Дата рождения: " + dob);
+            tvEmail.setText("Email: " + email);
+        }
+    }
 }
+
