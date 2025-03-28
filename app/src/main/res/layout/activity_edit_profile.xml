@@ -83,6 +83,6 @@
         android:layout_height="wrap_content"
         android:text="Сохранить"
         android:textColor="@color/white"
-        android:background="@color/orange"/>
+        android:background="@color/goal"/>
 
 </LinearLayout>
