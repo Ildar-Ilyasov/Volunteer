@@ -58,7 +58,7 @@ public class MenuFragment extends Fragment {
                 for (DataSnapshot eventSnapshot : snapshot.getChildren()) {
                     Event event = eventSnapshot.getValue(Event.class);
                     if (event != null) {
-                        event.setId(eventSnapshot.getKey()); // Сохраняем ID мероприятия
+                        event.setId(eventSnapshot.getKey());
                         eventList.add(event);
                     }
                 }

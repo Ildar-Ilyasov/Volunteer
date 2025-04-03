@@ -7,8 +7,7 @@ public class keyAPI extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        // Инициализация MapKitFactory
-        MapKitFactory.setApiKey("7ddba7a8-fbff-4016-8b8d-482ace2dc43b"); // Замените на ваш ключ
+        MapKitFactory.setApiKey("7ddba7a8-fbff-4016-8b8d-482ace2dc43b");
         MapKitFactory.initialize(this);
     }
 }

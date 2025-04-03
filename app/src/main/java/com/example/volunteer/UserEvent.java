@@ -9,7 +9,6 @@ public class UserEvent {
         this.eventId = eventId;
     }
 
-    // Геттеры и сеттеры
     public String getUserId() {
         return userId;
     }

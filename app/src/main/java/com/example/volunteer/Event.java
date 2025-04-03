@@ -4,17 +4,14 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
 public class Event {
-    private String id;          // Уникальный идентификатор мероприятия
-    private String title;       // Название мероприятия
-    private String description; // Описание мероприятия
-    private String date;        // Дата проведения
-    private String location;    // Место проведения
-    private String organizer;   // Организатор мероприятия
-
-    // Конструктор по умолчанию (обязателен для Firebase)
+    private String id;
+    private String title;
+    private String description;
+    private String date;
+    private String location;
+    private String organizer;
     public Event() {}
 
-    // Конструктор с параметрами
     public Event(String title, String description, String date, String location, String organizer) {
         this.title = title;
         this.description = description;
@@ -23,7 +20,6 @@ public class Event {
         this.organizer = organizer;
     }
 
-    // Геттеры и сеттеры
     public String getId() {
         return id;
     }

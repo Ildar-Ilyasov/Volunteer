@@ -41,7 +41,6 @@ public class EventDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_event_detail, container, false);
 
-        // Инициализация UI элементов
         tvTitle = view.findViewById(R.id.tvTitle);
         tvDate = view.findViewById(R.id.tvDate);
         tvDescription = view.findViewById(R.id.tvDescription);
@@ -50,25 +49,20 @@ public class EventDetailFragment extends Fragment {
         btnParticipate = view.findViewById(R.id.btnParticipate);
         Button btnOpenChat = view.findViewById(R.id.btnOpenChat);
 
-        // Получаем eventId и userId из аргументов
         eventId = getArguments() != null ? getArguments().getString("eventId") : null;
         userId = getArguments() != null ? getArguments().getString("userId") : null;
 
         if (eventId != null && userId != null) {
-            // Инициализация Firebase
             eventRef = FirebaseDatabase.getInstance().getReference("events").child(eventId);
             userEventsRef = FirebaseDatabase.getInstance().getReference("user_events");
 
-            // Загрузка данных о мероприятии
             loadEventDetails();
 
-            // Проверка, участвует ли пользователь в мероприятии
             checkIfUserParticipates();
         } else {
             Toast.makeText(getContext(), "Не удалось найти данные о пользователе или мероприятии.", Toast.LENGTH_SHORT).show();
         }
 
-        // Обработчик нажатия на кнопку "Участвовать"
         btnParticipate.setOnClickListener(v -> joinEvent());
         btnOpenChat.setOnClickListener(v -> openChatFragment());
 
@@ -82,7 +76,6 @@ public class EventDetailFragment extends Fragment {
                 if (snapshot.exists()) {
                     Event event = snapshot.getValue(Event.class);
                     if (event != null) {
-                        // Отображаем все данные о мероприятии
                         tvTitle.setText(event.getTitle());
                         tvDate.setText("Дата: " + event.getDate());
                         tvDescription.setText("Описание: " + event.getDescription());
@@ -94,7 +87,6 @@ public class EventDetailFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Обработка ошибки
                 Log.e("EventDetailFragment", "Ошибка загрузки данных о мероприятии: " + error.getMessage());
             }
         });
@@ -106,15 +98,13 @@ public class EventDetailFragment extends Fragment {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
-                        // Если пользователь участвует
                         btnParticipate.setText("Вы участвуете");
                         btnParticipate.setEnabled(false);
-                        btnParticipate.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY)); // Серый цвет
+                        btnParticipate.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
                     } else {
-                        // Если не участвует
                         btnParticipate.setText("Принять участие");
                         btnParticipate.setEnabled(true);
-                        btnParticipate.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.goal))); // Оранжевый цвет
+                        btnParticipate.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.goal)));
                     }
                 }
 
@@ -144,9 +134,9 @@ public class EventDetailFragment extends Fragment {
     private void openChatFragment() {
         ChatFragment chatFragment = new ChatFragment();
         Bundle args = new Bundle();
-        args.putString("eventId", eventId); // Передаем eventId
-        args.putString("userId", userId);   // Передаем userId
-        chatFragment.setArguments(args);    // Устанавливаем аргументы
+        args.putString("eventId", eventId);
+        args.putString("userId", userId);
+        chatFragment.setArguments(args);
         getParentFragmentManager().beginTransaction()
                 .replace(R.id.contentFrame, chatFragment)
                 .addToBackStack(null)

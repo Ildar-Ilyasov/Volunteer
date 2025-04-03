@@ -41,7 +41,7 @@ public class NewsDetailFragment extends Fragment {
                         .load(imageUrl)
                         .into(newsImage);
             } else {
-                newsImage.setImageResource(R.drawable.placeholder_image);  // Замените на свой ресурс изображения по умолчанию
+                newsImage.setImageResource(R.drawable.placeholder_image);
             }
         }
 

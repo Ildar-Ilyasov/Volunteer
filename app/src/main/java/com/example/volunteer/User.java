@@ -12,9 +12,8 @@ public class User {
     private String email;
     private String login;
     private String password;
-    private String registrationDate; // Новое поле
+    private String registrationDate;
 
-    // Пустой конструктор нужен Firebase
     public User() {
     }
 

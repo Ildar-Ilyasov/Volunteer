@@ -77,8 +77,8 @@ public class NewsFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putString("title", news.getTitle());
         bundle.putString("content", news.getContent());
-        bundle.putString("publication_date", news.getPublication_Date()); // Добавляем публикацию
-        bundle.putString("image_url", news.getImageUrl()); // Добавляем ссылку на изображение
+        bundle.putString("publication_date", news.getPublication_Date());
+        bundle.putString("image_url", news.getImageUrl());
         newsDetailFragment.setArguments(bundle);
 
         requireActivity().getSupportFragmentManager().beginTransaction()

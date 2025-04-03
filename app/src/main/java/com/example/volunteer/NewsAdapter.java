@@ -37,7 +37,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         News news = newsList.get(position);
         holder.tvTitle.setText(news.getTitle());
 
-        // Устанавливаем дату публикации под заголовком
         if (news.getPublication_Date() != null && !news.getPublication_Date().isEmpty()) {
             holder.tvPublicationDate.setText(news.getPublication_Date());
         }
@@ -48,8 +47,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
                     .load(imageUrl)
                     .into(holder.newsImage);
         } else {
-            // В случае, если ImageUrl пустой, подставляем изображение по умолчанию
-            holder.newsImage.setImageResource(R.drawable.placeholder_image);  // Поставьте свой ресурс по умолчанию
+            holder.newsImage.setImageResource(R.drawable.placeholder_image);
         }
 
         holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(news));
@@ -65,13 +63,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     }
 
     public static class NewsViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle, tvPublicationDate; // Добавлено tvPublicationDate
+        TextView tvTitle, tvPublicationDate;
         ImageView newsImage;
 
         public NewsViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTitle = itemView.findViewById(R.id.tvTitle);
-            tvPublicationDate = itemView.findViewById(R.id.tvPublicationDate); // Инициализация tvPublicationDate
+            tvPublicationDate = itemView.findViewById(R.id.tvPublicationDate);
             newsImage = itemView.findViewById(R.id.newsImage);
         }
     }

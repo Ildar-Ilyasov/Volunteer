@@ -3,7 +3,7 @@ package com.example.volunteer;
 public class Message {
     private String userId;
     private String text;
-    private long timestamp;  // Изменено с String на long
+    private long timestamp;
 
     public Message() {
     }
@@ -30,11 +30,11 @@ public class Message {
         this.text = text;
     }
 
-    public long getTimestamp() {  // Изменено
+    public long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(long timestamp) {  // Изменено
+    public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
 }

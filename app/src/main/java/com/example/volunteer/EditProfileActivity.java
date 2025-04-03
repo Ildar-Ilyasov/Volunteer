@@ -30,16 +30,15 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        // Инициализация элементов
         etFirstName = findViewById(R.id.etFirstName);
         etLastName = findViewById(R.id.etLastName);
         etDob = findViewById(R.id.etDob);
         etEmail = findViewById(R.id.etEmail);
         btnSave = findViewById(R.id.btnSave);
-        // Кнопка назад
+
         ImageButton iconBack = findViewById(R.id.icon_back);
-        iconBack.setOnClickListener(v -> finish());  // Закрытие Activity при нажатии
-        // Получаем userId из Intent
+        iconBack.setOnClickListener(v -> finish());
+
         userId = getIntent().getStringExtra("userId");
 
         if (userId == null) {
@@ -50,12 +49,9 @@ public class EditProfileActivity extends AppCompatActivity {
 
         userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
 
-        // Загружаем текущие данные пользователя
         loadUserData();
 
-        // Обработчик кнопки сохранения
         btnSave.setOnClickListener(v -> saveProfileData());
-        // Открытие календаря при клике на поле даты
         etDob.setOnClickListener(v -> showDatePicker());
     }
 
@@ -100,7 +96,6 @@ public class EditProfileActivity extends AppCompatActivity {
             if (task.isSuccessful()) {
                 Toast.makeText(EditProfileActivity.this, "Данные сохранены", Toast.LENGTH_SHORT).show();
 
-                // Создаем Intent для передачи данных обратно в ProfileFragment
                 Intent resultIntent = new Intent();
                 resultIntent.putExtra("firstName", firstName);
                 resultIntent.putExtra("lastName", lastName);
@@ -116,33 +111,28 @@ public class EditProfileActivity extends AppCompatActivity {
 
 
     private void showDatePicker() {
-        // Получаем текущую дату
         Calendar calendar = Calendar.getInstance();
 
-        // Если в поле уже есть дата, устанавливаем ее в календарь
         String currentDate = etDob.getText().toString().trim();
         if (!currentDate.isEmpty()) {
             String[] dateParts = currentDate.split("/");
             int day = Integer.parseInt(dateParts[0]);
-            int month = Integer.parseInt(dateParts[1]) - 1; // Месяцы в календаре считаются с 0
+            int month = Integer.parseInt(dateParts[1]) - 1;
             int year = Integer.parseInt(dateParts[2]);
             calendar.set(year, month, day);
         }
 
-        // Получаем день, месяц и год из календаря
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
 
-        // Создаем DatePickerDialog
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                 (view, year1, month1, dayOfMonth) -> {
-                    // Форматируем выбранную дату
+
                     String selectedDate = dayOfMonth + "/" + (month1 + 1) + "/" + year1;
-                    etDob.setText(selectedDate);  // Устанавливаем дату в поле
+                    etDob.setText(selectedDate);
                 }, year, month, day);
 
-        // Показываем DatePickerDialog
         datePickerDialog.show();
     }
 }

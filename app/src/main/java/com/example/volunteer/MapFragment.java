@@ -30,10 +30,8 @@ public class MapFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_map, container, false);
 
-        // Инициализация карты
         mapView = view.findViewById(R.id.mapview);
 
-        // Перемещение карты к указанной точке (Пенза)
         mapView.getMap().move(
                 new CameraPosition(
                         new Point(53.1959, 45.0183), // Координаты центра карты (Пенза)
@@ -87,6 +85,6 @@ public class MapFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mapView = null; // Убираем утечку памяти
+        mapView = null;
     }
 }

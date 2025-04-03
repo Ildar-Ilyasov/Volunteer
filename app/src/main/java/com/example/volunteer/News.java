@@ -5,10 +5,9 @@ public class News {
     private String title;
     private String content;
     private String ImageUrl;
-    private String publication_date;  // Добавлено поле
+    private String publication_date;
 
     public News() {
-        // Пустой конструктор для Firebase
     }
 
     public News(String id, String title, String content, String ImageUrl, String publication_date) {
@@ -19,7 +18,6 @@ public class News {
         this.publication_date = publication_date;
     }
 
-    // Геттеры и сеттеры
     public String getImageUrl() {
         return ImageUrl;
     }

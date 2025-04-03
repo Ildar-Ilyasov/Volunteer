@@ -39,7 +39,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
         holder.itemView.setOnClickListener(v -> {
             // Переход на фрагмент с деталями мероприятия
-            EventDetailFragment detailFragment = EventDetailFragment.newInstance(event.getId(), userId);  // Передаем eventId и userId
+            EventDetailFragment detailFragment = EventDetailFragment.newInstance(event.getId(), userId);
             FragmentTransaction transaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.contentFrame, detailFragment);
             transaction.addToBackStack(null);

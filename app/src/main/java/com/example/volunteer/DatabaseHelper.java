@@ -22,13 +22,11 @@ public class DatabaseHelper {
 
     // Регистрация пользователя
     public void registerUser(String firstName, String lastName, String dob, String email, String login, String password) {
-        // Получаем текущую дату регистрации
+
         String registrationDate = getCurrentDate();
 
-        // Создаем объект пользователя с датой регистрации
         User user = new User(firstName, lastName, dob, email, login, password, registrationDate);
 
-        // Добавляем нового пользователя в узел "users"
         mDatabase.child("users").child(login).setValue(user)
                 .addOnSuccessListener(aVoid -> {
                     Log.d("DatabaseHelper", "Пользователь успешно зарегистрирован");
@@ -42,13 +40,12 @@ public class DatabaseHelper {
 
 
 
-    // Проверка логина и пароля
     public void checkUser(String login, String password, final OnLoginCheckListener listener) {
         mDatabase.child("users").child(login).get().addOnCompleteListener(task -> {
             if (task.isSuccessful() && task.getResult().exists()) {
                 User user = task.getResult().getValue(User.class);
-                if (user != null && user.getPassword().equals(password)) {  // Проверка простого пароля
-                    listener.onLoginSuccess(login);  // Передаем login как userId
+                if (user != null && user.getPassword().equals(password)) {
+                    listener.onLoginSuccess(login);
                 } else {
                     listener.onLoginFailure("Неверный логин или пароль");
                 }
@@ -60,7 +57,7 @@ public class DatabaseHelper {
 
     // Интерфейс для обработки результатов проверки логина
     public interface OnLoginCheckListener {
-        void onLoginSuccess(String userId);  // Добавляем параметр userId
+        void onLoginSuccess(String userId);
         void onLoginFailure(String errorMessage);
     }
 }

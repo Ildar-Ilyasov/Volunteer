@@ -39,7 +39,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         holder.tvMessage.setText(message.getText());
         holder.tvUser.setText(message.getUserId());
 
-        // Форматирование времени в HH:mm
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm", Locale.getDefault());
         String formattedTime = sdf.format(new Date(message.getTimestamp()));
 

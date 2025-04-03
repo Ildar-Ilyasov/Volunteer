@@ -36,30 +36,25 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        // Инициализация UI элементов
         tvName = view.findViewById(R.id.tv_name);
         tvLogin = view.findViewById(R.id.tv_login);
         tvDob = view.findViewById(R.id.tv_dob);
         tvRegistrationDate = view.findViewById(R.id.tv_registration_date);
         tvEmail = view.findViewById(R.id.tv_email);
         recyclerViewUserEvents = view.findViewById(R.id.recyclerViewUserEvents);
-        ImageButton btnEditProfile = view.findViewById(R.id.btnEditProfile); // Кнопка редактирования
+        ImageButton btnEditProfile = view.findViewById(R.id.btnEditProfile);
 
-        // Устанавливаем значения по умолчанию
         tvName.setText("Загружается...");
         tvLogin.setText("Загружается...");
         tvDob.setText("Загружается...");
         tvRegistrationDate.setText("Загружается...");
         tvEmail.setText("Загружается...");
 
-        // Инициализация RecyclerView
         recyclerViewUserEvents.setLayoutManager(new LinearLayoutManager(getContext()));
         userEventList = new ArrayList<>();
 
-        // Получаем userId из аргументов фрагмента
         userId = getArguments() != null ? getArguments().getString("userId") : null;
 
-        // Передаем userId в адаптер
         userEventAdapter = new EventAdapter(userEventList, getContext(), userId);
         recyclerViewUserEvents.setAdapter(userEventAdapter);
 
@@ -70,12 +65,11 @@ public class ProfileFragment extends Fragment {
             loadUserEvents();
         }
 
-        // Открытие окна редактирования профиля
         btnEditProfile.setOnClickListener(v -> {
             if (userId != null) {
                 Intent intent = new Intent(getActivity(), EditProfileActivity.class);
                 intent.putExtra("userId", userId);
-                startActivityForResult(intent, 1);  // Добавляем requestCode
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -89,9 +83,8 @@ public class ProfileFragment extends Fragment {
                 if (snapshot.exists()) {
                     User user = snapshot.getValue(User.class);
                     if (user != null) {
-                        // Отображаем данные пользователя
                         tvName.setText(user.getFirstName() + " " + user.getLastName());
-                        tvName.setTextColor(getResources().getColor(R.color.orange)); // Оранжевый цвет для имени и фамилии
+                        tvName.setTextColor(getResources().getColor(R.color.orange));
                         tvLogin.setText("Логин: " + user.getLogin());
                         tvDob.setText("Дата рождения: " + user.getDob());
                         tvRegistrationDate.setText("Дата регистрации: " + user.getRegistrationDate());
@@ -121,7 +114,7 @@ public class ProfileFragment extends Fragment {
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 Event event = snapshot.getValue(Event.class);
                                 if (event != null) {
-                                    event.setId(eventId); // Устанавливаем ID мероприятия
+                                    event.setId(eventId);
                                     userEventList.add(event);
                                     userEventAdapter.notifyDataSetChanged();
                                 }
@@ -134,7 +127,6 @@ public class ProfileFragment extends Fragment {
                         });
                     }
                 }
-                // Показываем RecyclerView после загрузки данных
                 recyclerViewUserEvents.setVisibility(View.VISIBLE);
             }
 
@@ -145,19 +137,18 @@ public class ProfileFragment extends Fragment {
         });
     }
 
-    // Обрабатываем данные, которые возвращаются из EditProfileActivity
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            // Получаем обновленные данные из Intent
+
             String firstName = data.getStringExtra("firstName");
             String lastName = data.getStringExtra("lastName");
             String dob = data.getStringExtra("dob");
             String email = data.getStringExtra("email");
 
-            // Обновляем UI в ProfileFragment
+
             tvName.setText(firstName + " " + lastName);
             tvDob.setText("Дата рождения: " + dob);
             tvEmail.setText("Email: " + email);

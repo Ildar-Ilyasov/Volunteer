@@ -43,13 +43,10 @@ public class ChatFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
 
-        // Получаем eventId и userId из аргументов
         if (getArguments() != null) {
             eventId = getArguments().getString("eventId");
             userId = getArguments().getString("userId");
         }
-
-        // Инициализация RecyclerView и других UI элементов
         recyclerViewMessages = view.findViewById(R.id.recyclerViewMessages);
         recyclerViewMessages.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -59,16 +56,14 @@ public class ChatFragment extends Fragment {
 
         messagesRef = FirebaseDatabase.getInstance().getReference("chats").child(eventId); // Ссылка на чат мероприятия
 
-        // Загрузка сообщений
         loadMessages();
 
-        // Обработчик отправки сообщения
         Button sendButton = view.findViewById(R.id.sendButton);
         EditText messageInput = view.findViewById(R.id.messageInput);
         sendButton.setOnClickListener(v -> {
             String messageText = messageInput.getText().toString().trim();
             if (!messageText.isEmpty()) {
-                sendMessage(messageText);  // Отправить сообщение
+                sendMessage(messageText);
             }
         });
 
@@ -143,7 +138,7 @@ public class ChatFragment extends Fragment {
 
 
     private void sendMessage(String messageText) {
-        Long timestamp = System.currentTimeMillis(); // Добавляем время в миллисекундах
+        Long timestamp = System.currentTimeMillis();
 
         Message message = new Message(userId, messageText, timestamp);
         messagesRef.push().setValue(message)
