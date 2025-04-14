@@ -15,7 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class AddNewsFragment extends Fragment {
 
-    private EditText etTitle, etContent;
+    private EditText etTitle, etContent, etImageUrl, etPublicationDate;
     private Button btnPublish;
     private DatabaseReference databaseReference;
 
@@ -26,6 +26,8 @@ public class AddNewsFragment extends Fragment {
 
         etTitle = view.findViewById(R.id.etTitle);
         etContent = view.findViewById(R.id.etContent);
+        etImageUrl = view.findViewById(R.id.etImageUrl);
+        etPublicationDate = view.findViewById(R.id.etPublicationDate);
         btnPublish = view.findViewById(R.id.btnPublish);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("news");
@@ -38,22 +40,22 @@ public class AddNewsFragment extends Fragment {
     private void publishNews() {
         String title = etTitle.getText().toString().trim();
         String content = etContent.getText().toString().trim();
+        String imageUrl = etImageUrl.getText().toString().trim();
+        String publicationDate = etPublicationDate.getText().toString().trim();
 
-        if (title.isEmpty() || content.isEmpty()) {
+        if (title.isEmpty() || content.isEmpty() || imageUrl.isEmpty() || publicationDate.isEmpty()) {
             Toast.makeText(getActivity(), "Заполните все поля", Toast.LENGTH_SHORT).show();
             return;
         }
 
         String newsId = databaseReference.push().getKey();
-        String imageUrl = "";
-        String publication_date = "";
-        News news = new News(newsId, title, content, imageUrl, publication_date);
+        News news = new News(newsId, title, content, imageUrl, publicationDate);
+
         databaseReference.child(newsId).setValue(news)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(getActivity(), "Новость опубликована", Toast.LENGTH_SHORT).show();
-                    getParentFragmentManager().popBackStack(); // Возвращаемся на предыдущий экран
+                    getParentFragmentManager().popBackStack();
                 })
                 .addOnFailureListener(e -> Toast.makeText(getActivity(), "Ошибка: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
-
 }

@@ -48,38 +48,44 @@
         android:visibility="gone"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Список мероприятий или новостей -->
-    <LinearLayout
-        android:id="@+id/itemListContainer"
+    <!-- Прокручиваемый список мероприятий или новостей -->
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone"
-        android:gravity="start"> <!-- Обновлено на start -->
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
 
-        <!-- Пример списка с элементами -->
+        <!-- Контейнер для списка -->
         <LinearLayout
+            android:id="@+id/itemListContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="8dp"
-            android:gravity="center_vertical">
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:gravity="start">
 
-            <!-- Название мероприятия или новости -->
-            <TextView
-                android:id="@+id/itemTitle"
-                android:layout_width="wrap_content"
+            <!-- Пример элемента списка (можно удалить, так как элементы добавляются программно) -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Пример мероприятия"/>
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:gravity="center_vertical">
 
-            <!-- Меню с тремя точками -->
-            <ImageView
-                android:id="@+id/itemMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_more_vert"
-                android:layout_marginStart="16dp"
-                android:layout_gravity="end"/> <!-- Правильно выравнивание для меню -->
+                <TextView
+                    android:id="@+id/itemTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Пример мероприятия"/>
+
+                <ImageView
+                    android:id="@+id/itemMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_more_vert"
+                    android:layout_marginStart="16dp"
+                    android:layout_gravity="end"/>
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

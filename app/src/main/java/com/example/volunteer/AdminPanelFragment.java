@@ -27,6 +27,8 @@ public class AdminPanelFragment extends Fragment {
     private Button btnManageEvents, btnManageNews;
     private LinearLayout itemListContainer;
     private Button btnAdd;
+    private String currentCategory = "";
+
 
     @Nullable
     @Override
@@ -42,13 +44,30 @@ public class AdminPanelFragment extends Fragment {
         btnManageNews.setOnClickListener(v -> showManage("news"));
 
         btnAdd.setOnClickListener(v -> {
-            // TODO: Реализовать добавление мероприятия или новости
+            Fragment fragmentToOpen = null;
+
+            if (currentCategory.equals("events")) {
+                fragmentToOpen = new AddEventFragment();
+            } else if (currentCategory.equals("news")) {
+                fragmentToOpen = new AddNewsFragment();
+            }
+
+            if (fragmentToOpen != null) {
+                getParentFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.contentFrame, fragmentToOpen)
+                        .addToBackStack(null)
+                        .commit();
+            } else {
+                Toast.makeText(getContext(), "Категория не выбрана", Toast.LENGTH_SHORT).show();
+            }
         });
 
         return view;
     }
 
     private void showManage(String category) {
+        currentCategory = category; // запоминаем выбранную категорию
         btnAdd.setVisibility(View.VISIBLE);
         itemListContainer.removeAllViews();
 
@@ -62,6 +81,8 @@ public class AdminPanelFragment extends Fragment {
 
         itemListContainer.setVisibility(View.VISIBLE);
     }
+
+
 
     private void loadEventsFromFirebase() {
         DatabaseReference eventsRef = FirebaseDatabase.getInstance().getReference("events");
