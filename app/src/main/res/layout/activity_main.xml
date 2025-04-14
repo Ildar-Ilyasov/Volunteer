@@ -49,7 +49,6 @@
             android:contentDescription="SOS"
             android:src="@drawable/sos" />
 
-        <!-- Замена кнопки на ImageButton для карт -->
         <ImageButton
             android:id="@+id/btnMap"
             android:layout_width="0dp"
@@ -68,5 +67,15 @@
             android:contentDescription="Профиль"
             android:src="@drawable/profile" />
 
+        <!-- КНОПКА ТОЛЬКО ДЛЯ АДМИНА -->
+        <ImageButton
+            android:id="@+id/btnAdminPanel"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:visibility="gone"
+            android:contentDescription="Редактировать (админ)"
+            android:src="@drawable/icon_edit" />
     </LinearLayout>
+
     </RelativeLayout>

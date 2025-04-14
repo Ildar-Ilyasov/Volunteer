@@ -24,13 +24,17 @@
 
         <activity android:name=".MainActivity"
             android:exported="false"/>
-
+        <activity android:name=".EditEventActivity"
+            android:exported="false"/>
+        <activity android:name=".EditNewsActivity"
+            android:exported="false"/>
         <activity android:name=".RegistrationActivity"
             android:exported="false"/>
         <activity android:name=".EditProfileActivity"
             android:exported="false"/>
         <activity android:name=".LoginActivity"
             android:exported="true">
+
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

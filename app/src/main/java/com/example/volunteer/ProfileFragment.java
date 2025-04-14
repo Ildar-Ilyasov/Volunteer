@@ -55,7 +55,8 @@ public class ProfileFragment extends Fragment {
 
         userId = getArguments() != null ? getArguments().getString("userId") : null;
 
-        userEventAdapter = new EventAdapter(userEventList, getContext(), userId);
+        userEventAdapter = new EventAdapter(userEventList, getContext(), userId, false);
+
         recyclerViewUserEvents.setAdapter(userEventAdapter);
 
         if (userId != null) {

@@ -5,14 +5,30 @@
     android:padding="16dp"
     android:background="@drawable/border_goal">
 
-    <TextView
-        android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Название мероприятия"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/orange"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Название мероприятия"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/orange" />
+
+        <ImageView
+            android:id="@+id/itemMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_more_vert"
+            android:contentDescription="Меню"
+            android:visibility="gone" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvDate"
@@ -21,7 +37,7 @@
         android:text="Дата"
         android:textSize="14sp"
         android:textColor="@color/black"
-        android:layout_marginTop="4dp"/>
+        android:layout_marginTop="4dp" />
 
     <TextView
         android:id="@+id/tvLocation"
@@ -30,6 +46,5 @@
         android:text="Локация"
         android:textSize="14sp"
         android:textColor="@color/black"
-        android:layout_marginTop="8dp"/>
-
+        android:layout_marginTop="8dp" />
 </LinearLayout>

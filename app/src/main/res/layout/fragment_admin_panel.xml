@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="top|center_horizontal">
+
+    <!-- Заголовок окна администратора -->
+    <TextView
+        android:id="@+id/adminTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Окно администратора"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"/>
+
+    <!-- Кнопки для управления мероприятиями и новостями -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btnManageEvents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Управление мероприятиями"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btnManageNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Управление новостями"/>
+    </LinearLayout>
+
+    <!-- Кнопка для добавления мероприятия или новости -->
+    <Button
+        android:id="@+id/btnAddItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Добавить"
+        android:visibility="gone"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Список мероприятий или новостей -->
+    <LinearLayout
+        android:id="@+id/itemListContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="start"> <!-- Обновлено на start -->
+
+        <!-- Пример списка с элементами -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp"
+            android:gravity="center_vertical">
+
+            <!-- Название мероприятия или новости -->
+            <TextView
+                android:id="@+id/itemTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Пример мероприятия"/>
+
+            <!-- Меню с тремя точками -->
+            <ImageView
+                android:id="@+id/itemMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_more_vert"
+                android:layout_marginStart="16dp"
+                android:layout_gravity="end"/> <!-- Правильно выравнивание для меню -->
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

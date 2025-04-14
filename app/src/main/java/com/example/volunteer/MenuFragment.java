@@ -40,7 +40,8 @@ public class MenuFragment extends Fragment {
 
         // Инициализация списка мероприятий и адаптера
         eventList = new ArrayList<>();
-        eventAdapter = new EventAdapter(eventList, getContext(), userId);  // Передаем userId
+        eventAdapter = new EventAdapter(eventList, getContext(), userId, false);  // Пользователь НЕ админ
+
         recyclerViewEvents.setAdapter(eventAdapter);
 
         // Загрузка мероприятий из Firebase

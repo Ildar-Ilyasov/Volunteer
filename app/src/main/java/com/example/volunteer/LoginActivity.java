@@ -47,23 +47,18 @@ public class LoginActivity extends AppCompatActivity {
             dbHelper.checkUser(login, hashedPassword, new DatabaseHelper.OnLoginCheckListener() {
                 @Override
                 public void onLoginSuccess(String userId) {
-                    //Toast.makeText(LoginActivity.this, "Вход выполнен успешно", Toast.LENGTH_SHORT).show();
-                    Log.d("LoginActivity", "Пользователь успешно вошел: " + login);
-
+                    boolean isAdmin = login.equals("admin");
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("userId", userId);
+                    intent.putExtra("isAdmin", isAdmin);
                     startActivity(intent);
                     finish();
                 }
 
                 @Override
                 public void onLoginFailure(String errorMessage) {
-                    Log.e("LoginActivity", "Ошибка входа: " + errorMessage);
-
                     if (errorMessage.equals("Неверный логин или пароль")) {
                         Toast.makeText(LoginActivity.this, "Неверный логин или пароль", Toast.LENGTH_SHORT).show();
-                    } else if (errorMessage.contains("нет подключения") || errorMessage.contains("DatabaseError")) {
-                        Toast.makeText(LoginActivity.this, "Ошибка соединения с базой данных. Попробуйте позже.", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(LoginActivity.this, "Ошибка: " + errorMessage, Toast.LENGTH_LONG).show();
                     }
@@ -77,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    // Метод для хеширования пароля (SHA-512)
     private String hashPassword(String password) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");

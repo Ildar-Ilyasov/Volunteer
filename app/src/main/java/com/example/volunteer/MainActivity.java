@@ -1,6 +1,7 @@
 package com.example.volunteer;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
@@ -19,10 +20,11 @@ public class MainActivity extends AppCompatActivity {
         ImageButton btnSOS = findViewById(R.id.btnSOS);
         ImageButton btnMap = findViewById(R.id.btnMap);
         ImageButton btnProfile = findViewById(R.id.btnProfile);
-        //Button btnAddEvent = findViewById(R.id.btnAddEvent);
-        //Button btnNews = findViewById(R.id.btnNews);
+        ImageButton btnAdminPanel = findViewById(R.id.btnAdminPanel); // кнопка для админа
 
         String userId = getIntent().getStringExtra("userId");
+        boolean isAdmin = getIntent().getBooleanExtra("isAdmin", false);
+
         loadFragment(new MenuFragment(userId));
 
         btnMenu.setOnClickListener(v -> loadFragment(new MenuFragment(userId)));
@@ -38,8 +40,14 @@ public class MainActivity extends AppCompatActivity {
                 loadFragment(profileFragment);
             }
         });
-        //btnAddEvent.setOnClickListener(v -> loadFragment(new AddEventFragment()));
-        //btnNews.setOnClickListener(v -> loadFragment(new AddNewsFragment()));
+
+        // Показываем кнопку только админу
+        if (isAdmin) {
+            btnAdminPanel.setVisibility(View.VISIBLE);
+            btnAdminPanel.setOnClickListener(v -> loadFragment(new AdminPanelFragment()));
+        } else {
+            btnAdminPanel.setVisibility(View.GONE);
+        }
     }
 
     private void loadFragment(Fragment fragment) {

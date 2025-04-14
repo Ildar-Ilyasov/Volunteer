@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/editNewsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Заголовок новости"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/editNewsContent"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:hint="Содержание"
+            android:inputType="textMultiLine"
+            android:gravity="top"
+            android:scrollbars="vertical" />
+
+        <EditText
+            android:id="@+id/editNewsImageUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="URL изображения"
+            android:inputType="textUri" />
+
+        <EditText
+            android:id="@+id/editNewsDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Дата публикации"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btnSaveNews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Сохранить" />
+    </LinearLayout>
+</ScrollView>
