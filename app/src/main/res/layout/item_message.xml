@@ -1,31 +1,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/messageContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/border_goal"
     android:padding="8dp"
     android:layout_margin="4dp">
 
-<TextView
-android:id="@+id/tvUser"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="User"
-android:textStyle="bold"
-android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tvUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User"
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
-<TextView
-android:id="@+id/tvMessage"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Message"
-android:textColor="@color/black"
-android:paddingBottom="4dp"/>
+    <TextView
+        android:id="@+id/tvMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Message"
+        android:textColor="@color/black"
+        android:paddingBottom="4dp"/>
 
-<TextView
-android:id="@+id/tvTimestamp"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Timestamp"
-android:textColor="@android:color/darker_gray"/>
+    <TextView
+        android:id="@+id/tvTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Timestamp"
+        android:textColor="@android:color/darker_gray"/>
 </LinearLayout>

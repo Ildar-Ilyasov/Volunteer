@@ -6,25 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import androidx.annotation.NonNull;
 
 
@@ -51,7 +46,7 @@ public class ChatFragment extends Fragment {
         recyclerViewMessages.setLayoutManager(new LinearLayoutManager(getContext()));
 
         messageList = new ArrayList<>();
-        messageAdapter = new MessageAdapter(messageList);
+        messageAdapter = new MessageAdapter(messageList, userId);
         recyclerViewMessages.setAdapter(messageAdapter);
 
         messagesRef = FirebaseDatabase.getInstance().getReference("chats").child(eventId); // Ссылка на чат мероприятия
@@ -129,10 +124,11 @@ public class ChatFragment extends Fragment {
         messageList.clear();
         for (Message msg : tempMessageList) {
             String fullName = userNamesCache.getOrDefault(msg.getUserId(), "Неизвестный");
-            messageList.add(new Message(fullName, msg.getText(), msg.getTimestamp()));
+            messageList.add(new Message(msg.getUserId(), fullName, msg.getText(), msg.getTimestamp()));
         }
         messageAdapter.notifyDataSetChanged();
     }
+
 
 
 

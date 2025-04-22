@@ -87,7 +87,6 @@ public class RegistrationActivity extends AppCompatActivity {
             String hashedPassword = hashPassword(password);
 
             dbHelper.registerUser(firstName, lastName, dobFormatted, email, login, hashedPassword);
-            //Toast.makeText(RegistrationActivity.this, "Регистрация успешна", Toast.LENGTH_SHORT).show();
 
             Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
             startActivity(intent);
