@@ -27,25 +27,28 @@
 
         <Button
             android:id="@+id/btnManageEvents"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/goal"
             android:text="Управление мероприятиями"
             android:layout_marginBottom="16dp"/>
 
         <Button
             android:id="@+id/btnManageNews"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/goal"
             android:text="Управление новостями"/>
     </LinearLayout>
 
     <!-- Кнопка для добавления мероприятия или новости -->
     <Button
         android:id="@+id/btnAddItem"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Добавить"
         android:visibility="gone"
+        android:background="@color/goal"
         android:layout_marginBottom="16dp"/>
 
     <!-- Прокручиваемый список мероприятий или новостей -->
