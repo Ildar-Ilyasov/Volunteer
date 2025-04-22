@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import android.widget.ImageButton;
 
 public class AddNewsFragment extends Fragment {
 
@@ -23,6 +24,8 @@ public class AddNewsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_news, container, false);
+        ImageButton btnBack = view.findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> requireActivity().onBackPressed());
 
         etTitle = view.findViewById(R.id.etTitle);
         etContent = view.findViewById(R.id.etContent);
@@ -36,6 +39,7 @@ public class AddNewsFragment extends Fragment {
 
         return view;
     }
+
 
     private void publishNews() {
         String title = etTitle.getText().toString().trim();

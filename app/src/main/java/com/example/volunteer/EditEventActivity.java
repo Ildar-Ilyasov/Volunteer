@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import android.widget.ImageButton;
 
 public class EditEventActivity extends AppCompatActivity {
 
@@ -45,7 +46,10 @@ public class EditEventActivity extends AppCompatActivity {
 
         // Логика для кнопки сохранения изменений
         btnSaveEvent.setOnClickListener(v -> saveEventChanges());
+        ImageButton btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> onBackPressed());
     }
+
 
     private void saveEventChanges() {
         // Получаем новые значения из полей ввода

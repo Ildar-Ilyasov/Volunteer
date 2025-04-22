@@ -17,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import android.widget.ImageButton;
 
 public class AddEventFragment extends Fragment {
 
@@ -26,10 +27,13 @@ public class AddEventFragment extends Fragment {
     private Calendar startDateCalendar = Calendar.getInstance();
     private Calendar endDateCalendar = Calendar.getInstance();
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_event, container, false);
+        ImageButton btnBack = view.findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> requireActivity().onBackPressed());
 
         eventsRef = FirebaseDatabase.getInstance().getReference("events");
 
@@ -46,6 +50,7 @@ public class AddEventFragment extends Fragment {
         etEventEndDate.setOnClickListener(v -> showDatePickerDialog(endDateCalendar, etEventEndDate));
 
         btnAddEvent.setOnClickListener(v -> addEventToDatabase());
+
 
         return view;
     }
