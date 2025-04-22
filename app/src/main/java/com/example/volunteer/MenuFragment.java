@@ -16,12 +16,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
+import androidx.appcompat.widget.SearchView;
 
 public class MenuFragment extends Fragment {
 
     private RecyclerView recyclerViewEvents;
     private EventAdapter eventAdapter;
     private List<Event> eventList;
+    private List<Event> filteredEventList;
     private DatabaseReference eventsRef;
     private String userId;
 
@@ -40,9 +42,24 @@ public class MenuFragment extends Fragment {
 
         // Инициализация списка мероприятий и адаптера
         eventList = new ArrayList<>();
-        eventAdapter = new EventAdapter(eventList, getContext(), userId, false);  // Пользователь НЕ админ
-
+        filteredEventList = new ArrayList<>();
+        eventAdapter = new EventAdapter(filteredEventList, getContext(), userId, false);  // Пользователь НЕ админ
         recyclerViewEvents.setAdapter(eventAdapter);
+
+        // Инициализация SearchView
+        SearchView searchView = view.findViewById(R.id.searchView);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterEvents(newText);
+                return true;
+            }
+        });
 
         // Загрузка мероприятий из Firebase
         eventsRef = FirebaseDatabase.getInstance().getReference("events");
@@ -63,6 +80,8 @@ public class MenuFragment extends Fragment {
                         eventList.add(event);
                     }
                 }
+                filteredEventList.clear();
+                filteredEventList.addAll(eventList);  // По умолчанию показываем все мероприятия
                 eventAdapter.notifyDataSetChanged();
             }
 
@@ -71,5 +90,15 @@ public class MenuFragment extends Fragment {
                 // Обработка ошибки
             }
         });
+    }
+
+    private void filterEvents(String query) {
+        filteredEventList.clear();
+        for (Event event : eventList) {
+            if (event.getTitle().toLowerCase().contains(query.toLowerCase())) {
+                filteredEventList.add(event);
+            }
+        }
+        eventAdapter.notifyDataSetChanged();
     }
 }
