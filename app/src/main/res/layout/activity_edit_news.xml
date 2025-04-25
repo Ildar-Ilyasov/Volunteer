@@ -52,7 +52,8 @@
             android:id="@+id/btnSaveNews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/goal"
-            android:text="Сохранить" />
+            android:background="@drawable/rounded_button"
+            android:text="Сохранить"
+            android:textColor="@color/white"/>
     </LinearLayout>
 </ScrollView>

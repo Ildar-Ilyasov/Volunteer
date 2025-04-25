@@ -17,22 +17,30 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
 public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHolder> {
-
     private List<Event> eventList;
     private Context context;
     private String userId;
-    private boolean isAdmin; // флаг администратора
+    private boolean isAdmin;
+    private DatabaseReference userEventsRef;
 
     public EventAdapter(List<Event> eventList, Context context, String userId, boolean isAdmin) {
         this.eventList = eventList;
         this.context = context;
         this.userId = userId;
         this.isAdmin = isAdmin;
+
+        if (userId != null) {
+            userEventsRef = FirebaseDatabase.getInstance().getReference("user_events").child(userId);
+        }
     }
 
     @NonNull
@@ -49,7 +57,28 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.tvDate.setText(event.getDate());
         holder.tvLocation.setText(event.getLocation());
 
-        // Показать или скрыть меню администратора
+        // Проверка участия и установка соответствующей рамки
+        if (userId != null) {
+            userEventsRef.child(event.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        holder.itemView.setBackgroundResource(R.drawable.border_green);
+                    } else {
+                        holder.itemView.setBackgroundResource(R.drawable.border_goal);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    holder.itemView.setBackgroundResource(R.drawable.border_goal);
+                }
+            });
+        } else {
+            holder.itemView.setBackgroundResource(R.drawable.border_goal);
+        }
+
+        // Меню администратора
         if (isAdmin) {
             holder.itemMenu.setVisibility(View.VISIBLE);
             holder.itemMenu.setOnClickListener(v -> {
@@ -59,11 +88,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
                 popupMenu.setOnMenuItemClickListener(item -> {
                     if (item.getItemId() == R.id.menu_edit) {
-                        // Открытие экрана редактирования события
                         openEditEventScreen(event);
                         return true;
                     } else if (item.getItemId() == R.id.menu_delete) {
-                        // Удаление события
                         deleteEvent(event, position);
                         return true;
                     }
@@ -75,8 +102,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             holder.itemMenu.setVisibility(View.GONE);
         }
 
+        // Обработчик клика на мероприятие
         holder.itemView.setOnClickListener(v -> {
-            // Переход на фрагмент с деталями мероприятия
             EventDetailFragment detailFragment = EventDetailFragment.newInstance(event.getId(), userId);
             FragmentTransaction transaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.contentFrame, detailFragment);
@@ -85,7 +112,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         });
     }
 
-    // Метод для открытия экрана редактирования события
     private void openEditEventScreen(Event event) {
         Intent intent = new Intent(context, EditEventActivity.class);
         intent.putExtra("eventId", event.getId());
@@ -97,7 +123,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         context.startActivity(intent);
     }
 
-    // Метод для удаления события
     private void deleteEvent(Event event, int position) {
         FirebaseDatabase.getInstance().getReference("events")
                 .child(event.getId())
@@ -126,7 +151,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvDate = itemView.findViewById(R.id.tvDate);
             tvLocation = itemView.findViewById(R.id.tvLocation);
-            itemMenu = itemView.findViewById(R.id.itemMenu); // добавляем
+            itemMenu = itemView.findViewById(R.id.itemMenu);
         }
     }
 }

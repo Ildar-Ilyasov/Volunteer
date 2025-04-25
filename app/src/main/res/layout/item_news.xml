@@ -4,7 +4,8 @@
     android:orientation="vertical"
     android:background="@drawable/border_goal"
     android:elevation="2dp"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:layout_marginBottom="8dp">
 
     <ImageView
         android:id="@+id/newsImage"

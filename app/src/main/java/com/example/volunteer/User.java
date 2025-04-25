@@ -13,6 +13,7 @@ public class User {
     private String login;
     private String password;
     private String registrationDate;
+    private String profileImageBase64;  // Новое поле для хранения аватарки в Base64
 
     public User() {
     }
@@ -27,6 +28,7 @@ public class User {
         this.registrationDate = registrationDate;
     }
 
+    // Геттеры и сеттеры
     public String getFirstName() {
         return firstName;
     }
@@ -81,5 +83,14 @@ public class User {
 
     public void setRegistrationDate(String registrationDate) {
         this.registrationDate = registrationDate;
+    }
+
+    // Новый геттер и сеттер для аватарки
+    public String getProfileImageBase64() {
+        return profileImageBase64;
+    }
+
+    public void setProfileImageBase64(String profileImageBase64) {
+        this.profileImageBase64 = profileImageBase64;
     }
 }

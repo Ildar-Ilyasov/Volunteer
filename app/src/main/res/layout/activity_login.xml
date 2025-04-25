@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_login"
-        android:backgroundTint="@color/goal"
+        android:background="@drawable/rounded_button"
         android:textColor="@color/white"
         android:layout_marginTop="12dp"/>
 
@@ -59,7 +59,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_register"
-        android:backgroundTint="@color/goal"
+        android:background="@drawable/rounded_button"
         android:textColor="@color/white"
         android:layout_marginTop="8dp"/>
 

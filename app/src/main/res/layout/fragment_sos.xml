@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:text="Позвонить пожарным"
         android:padding="10dp"
-        android:backgroundTint="@color/goal"
+        android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/fire"
         android:drawableRight="@drawable/fire"
         android:textColor="@color/white"/>
@@ -33,9 +33,10 @@
         android:id="@+id/policeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="Позвонить в полицию"
         android:padding="10dp"
-        android:backgroundTint="@color/goal"
+        android:background="@drawable/rounded_button"
         android:textColor="@color/white"
         android:drawableLeft="@drawable/police"
         android:drawableRight="@drawable/police"/>
@@ -44,9 +45,10 @@
         android:id="@+id/medicsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="Позвонить в скорую"
         android:padding="10dp"
-        android:backgroundTint="@color/goal"
+        android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/medic"
         android:drawableRight="@drawable/medic"
         android:textColor="@color/white"/>
@@ -55,9 +57,10 @@
         android:id="@+id/gasButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="Позвонить в газовую службу"
         android:padding="10dp"
-        android:backgroundTint="@color/goal"
+        android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/gas"
         android:drawableRight="@drawable/gas"
         android:textColor="@color/white"/>
@@ -66,9 +69,10 @@
         android:id="@+id/infoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="Позвонить в справочную службу"
         android:padding="10dp"
-        android:backgroundTint="@color/goal"
+        android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/info"
         android:drawableRight="@drawable/info"
         android:textColor="@color/white"/>
@@ -77,12 +81,14 @@
         android:id="@+id/rescueButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="10dp"
         android:text="Позвонить в службу спасения"
         android:padding="10dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/goal"
+        android:background="@drawable/rounded_button"
         android:drawableLeft="@drawable/rescue"
         android:drawableRight="@drawable/rescue"
         android:textColor="@color/white"/>
+
 
 </LinearLayout>
