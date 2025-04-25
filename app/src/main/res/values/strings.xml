@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Добрые Руки</string>
+    <string name="app_name">Социальный сервис волонтерского движения</string>
     <string name="hint_first_name">Имя</string>
     <string name="hint_last_name">Фамилия</string>
     <string name="hint_dob">Дата рождения</string>
