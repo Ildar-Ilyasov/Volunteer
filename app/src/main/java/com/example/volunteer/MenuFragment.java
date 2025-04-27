@@ -16,6 +16,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Locale;
 import androidx.appcompat.widget.SearchView;
 
 public class MenuFragment extends Fragment {
@@ -80,8 +86,22 @@ public class MenuFragment extends Fragment {
                         eventList.add(event);
                     }
                 }
+
+                // Сортировка по дате начала
+                Collections.sort(eventList, new Comparator<Event>() {
+                    @Override
+                    public int compare(Event e1, Event e2) {
+                        Date date1 = getStartDateFromEvent(e1);
+                        Date date2 = getStartDateFromEvent(e2);
+                        if (date1 == null || date2 == null) {
+                            return 0;  // Если не получилось спарсить дату
+                        }
+                        return date1.compareTo(date2);
+                    }
+                });
+
                 filteredEventList.clear();
-                filteredEventList.addAll(eventList);  // По умолчанию показываем все мероприятия
+                filteredEventList.addAll(eventList);
                 eventAdapter.notifyDataSetChanged();
             }
 
@@ -100,5 +120,18 @@ public class MenuFragment extends Fragment {
             }
         }
         eventAdapter.notifyDataSetChanged();
+    }
+    private Date getStartDateFromEvent(Event event) {
+        if (event.getDate() == null || event.getDate().isEmpty()) {
+            return null;
+        }
+        try {
+            String[] dates = event.getDate().split(" - ");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            return sdf.parse(dates[0]);  // Берем первую дату из диапазона
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }
