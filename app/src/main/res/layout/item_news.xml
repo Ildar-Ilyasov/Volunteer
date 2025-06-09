@@ -22,7 +22,6 @@
         android:textStyle="bold"
         android:textColor="@color/orange"/>
 
-    <!-- Добавьте TextView для даты публикации, выровненный справа -->
     <TextView
         android:id="@+id/tvPublicationDate"
         android:layout_width="wrap_content"

@@ -42,17 +42,14 @@ public class MenuFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
-        // Инициализация RecyclerView
         recyclerViewEvents = view.findViewById(R.id.recyclerViewEvents);
         recyclerViewEvents.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Инициализация списка мероприятий и адаптера
         eventList = new ArrayList<>();
         filteredEventList = new ArrayList<>();
         eventAdapter = new EventAdapter(filteredEventList, getContext(), userId, false);  // Пользователь НЕ админ
         recyclerViewEvents.setAdapter(eventAdapter);
 
-        // Инициализация SearchView
         SearchView searchView = view.findViewById(R.id.searchView);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -67,7 +64,6 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        // Загрузка мероприятий из Firebase
         eventsRef = FirebaseDatabase.getInstance().getReference("events");
         loadEvents();
 
@@ -87,7 +83,6 @@ public class MenuFragment extends Fragment {
                     }
                 }
 
-                // Сортировка по дате начала
                 Collections.sort(eventList, new Comparator<Event>() {
                     @Override
                     public int compare(Event e1, Event e2) {
@@ -107,7 +102,6 @@ public class MenuFragment extends Fragment {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                // Обработка ошибки
             }
         });
     }

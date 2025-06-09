@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // Показываем кнопку только админу
         if (isAdmin) {
             btnAdminPanel.setVisibility(View.VISIBLE);
             btnAdminPanel.setOnClickListener(v -> loadFragment(new AdminPanelFragment()));

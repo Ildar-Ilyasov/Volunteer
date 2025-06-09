@@ -21,7 +21,6 @@ public class EditEventActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_event);
 
-        // Получаем данные, переданные из предыдущего Activity
         eventId = getIntent().getStringExtra("eventId");
         String eventTitle = getIntent().getStringExtra("eventTitle");
         String eventDescription = getIntent().getStringExtra("eventDescription");
@@ -29,7 +28,6 @@ public class EditEventActivity extends AppCompatActivity {
         String eventLocation = getIntent().getStringExtra("eventLocation");
         String eventOrganizer = getIntent().getStringExtra("eventOrganizer");
 
-        // Инициализация элементов UI
         etEventTitle = findViewById(R.id.etEventTitle);
         etEventDescription = findViewById(R.id.etEventDescription);
         etEventDate = findViewById(R.id.etEventDate);
@@ -37,14 +35,12 @@ public class EditEventActivity extends AppCompatActivity {
         etEventOrganizer = findViewById(R.id.etEventOrganizer);
         btnSaveEvent = findViewById(R.id.btnSaveEvent);
 
-        // Устанавливаем данные в поля для редактирования
         etEventTitle.setText(eventTitle);
         etEventDescription.setText(eventDescription);
         etEventDate.setText(eventDate);
         etEventLocation.setText(eventLocation);
         etEventOrganizer.setText(eventOrganizer);
 
-        // Логика для кнопки сохранения изменений
         btnSaveEvent.setOnClickListener(v -> saveEventChanges());
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> onBackPressed());
@@ -52,20 +48,17 @@ public class EditEventActivity extends AppCompatActivity {
 
 
     private void saveEventChanges() {
-        // Получаем новые значения из полей ввода
         String newTitle = etEventTitle.getText().toString();
         String newDescription = etEventDescription.getText().toString();
         String newDate = etEventDate.getText().toString();
         String newLocation = etEventLocation.getText().toString();
         String newOrganizer = etEventOrganizer.getText().toString();
 
-        // Проверка на пустые поля
         if (newTitle.isEmpty() || newDescription.isEmpty() || newDate.isEmpty() || newLocation.isEmpty() || newOrganizer.isEmpty()) {
             Toast.makeText(EditEventActivity.this, "Пожалуйста, заполните все поля", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Сохраняем изменения в Firebase
         DatabaseReference eventRef = FirebaseDatabase.getInstance().getReference("events").child(eventId);
         eventRef.child("title").setValue(newTitle);
         eventRef.child("description").setValue(newDescription);

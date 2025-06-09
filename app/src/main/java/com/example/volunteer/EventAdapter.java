@@ -57,7 +57,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.tvDate.setText(event.getDate());
         holder.tvLocation.setText(event.getLocation());
 
-        // Проверка участия и установка соответствующей рамки
         if (userId != null) {
             userEventsRef.child(event.getId()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -78,7 +77,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             holder.itemView.setBackgroundResource(R.drawable.border_goal);
         }
 
-        // Меню администратора
         if (isAdmin) {
             holder.itemMenu.setVisibility(View.VISIBLE);
             holder.itemMenu.setOnClickListener(v -> {
@@ -102,7 +100,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             holder.itemMenu.setVisibility(View.GONE);
         }
 
-        // Обработчик клика на мероприятие
         holder.itemView.setOnClickListener(v -> {
             EventDetailFragment detailFragment = EventDetailFragment.newInstance(event.getId(), userId);
             FragmentTransaction transaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();

@@ -4,9 +4,8 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:background="#FFFFFF"
-    android:gravity="top"> <!-- Центрирование содержимого по вертикали в верхней части экрана -->
+    android:gravity="top">
 
-    <!-- Заголовок Регистрация -->
     <TextView
         android:id="@+id/tvRegistrationTitle"
         android:layout_width="wrap_content"
@@ -18,7 +17,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="16dp" />
 
-    <!-- Поле для имени -->
     <EditText
         android:id="@+id/etFirstName"
         android:layout_width="match_parent"
@@ -30,7 +28,7 @@
         android:backgroundTint="@color/orange"
         android:textColorHint="@color/orange"/>
 
-    <!-- Поле для фамилии -->
+
     <EditText
         android:id="@+id/etLastName"
         android:layout_width="match_parent"
@@ -41,7 +39,7 @@
         android:backgroundTint="@color/orange"
         android:textColorHint="@color/orange"/>
 
-    <!-- Поле для даты рождения -->
+
     <EditText
         android:id="@+id/etDob"
         android:layout_width="match_parent"
@@ -53,7 +51,6 @@
         android:backgroundTint="@color/orange"
         android:textColorHint="@color/orange"/>
 
-    <!-- Поле для email -->
     <EditText
         android:id="@+id/etEmail"
         android:layout_width="match_parent"
@@ -65,7 +62,6 @@
         android:backgroundTint="@color/orange"
         android:textColorHint="@color/orange"/>
 
-    <!-- Поле для логина -->
     <EditText
         android:id="@+id/etLogin"
         android:layout_width="match_parent"
@@ -76,7 +72,6 @@
         android:backgroundTint="@color/orange"
         android:textColorHint="@color/orange"/>
 
-    <!-- Поле для пароля -->
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
@@ -88,7 +83,6 @@
         android:backgroundTint="@color/orange"
         android:textColorHint="@color/orange"/>
 
-    <!-- Кнопка регистрации -->
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"

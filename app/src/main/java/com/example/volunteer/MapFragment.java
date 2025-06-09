@@ -34,14 +34,13 @@ public class MapFragment extends Fragment {
 
         mapView.getMap().move(
                 new CameraPosition(
-                        new Point(53.1959, 45.0183), // Координаты центра карты (Пенза)
-                        12.0f, // Масштаб
-                        0.0f, // Азимут
-                        0.0f  // Наклон
+                        new Point(53.1959, 45.0183),
+                        12.0f,
+                        0.0f,
+                        0.0f
                 )
         );
 
-        // Проверка и запрос разрешений на доступ к местоположению
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         } else {

@@ -4,7 +4,6 @@
     android:orientation="vertical"
     android:background="@color/white">
 
-    <!-- Заголовок чата -->
     <TextView
         android:id="@+id/chatTitle"
         android:layout_width="match_parent"
@@ -16,14 +15,12 @@
         android:gravity="center"
         android:padding="16dp" />
 
-    <!-- Список сообщений -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMessages"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <!-- Поле для ввода сообщения и кнопка отправки -->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

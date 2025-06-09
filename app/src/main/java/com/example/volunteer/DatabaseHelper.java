@@ -20,7 +20,6 @@ public class DatabaseHelper {
         return sdf.format(new Date());
     }
 
-    // Регистрация пользователя
     public void registerUser(String firstName, String lastName, String dob, String email, String login, String password) {
 
         String registrationDate = getCurrentDate();
@@ -55,7 +54,6 @@ public class DatabaseHelper {
         });
     }
 
-    // Интерфейс для обработки результатов проверки логина
     public interface OnLoginCheckListener {
         void onLoginSuccess(String userId);
         void onLoginFailure(String errorMessage);

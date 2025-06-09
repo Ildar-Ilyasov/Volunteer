@@ -19,7 +19,6 @@
             android:layout_gravity="start"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Поле для названия мероприятия -->
         <EditText
             android:id="@+id/etEventTitle"
             android:layout_width="match_parent"
@@ -27,7 +26,6 @@
             android:hint="Название мероприятия"
             android:inputType="text" />
 
-        <!-- Поле для описания мероприятия -->
         <EditText
             android:id="@+id/etEventDescription"
             android:layout_width="match_parent"
@@ -36,7 +34,6 @@
             android:inputType="textMultiLine"
             android:minLines="3" />
 
-        <!-- Поле для даты начала мероприятия -->
         <EditText
             android:id="@+id/etEventStartDate"
             android:layout_width="match_parent"
@@ -46,7 +43,6 @@
             android:clickable="true"
             android:inputType="none" />
 
-        <!-- Поле для даты окончания мероприятия -->
         <EditText
             android:id="@+id/etEventEndDate"
             android:layout_width="match_parent"
@@ -56,7 +52,6 @@
             android:clickable="true"
             android:inputType="none" />
 
-        <!-- Поле для места проведения -->
         <EditText
             android:id="@+id/etEventLocation"
             android:layout_width="match_parent"
@@ -64,7 +59,6 @@
             android:hint="Место проведения"
             android:inputType="text" />
 
-        <!-- Поле для организатора -->
         <EditText
             android:id="@+id/etEventOrganizer"
             android:layout_width="match_parent"
@@ -72,7 +66,6 @@
             android:hint="Организатор"
             android:inputType="text" />
 
-        <!-- Кнопка "Добавить мероприятие" -->
         <Button
             android:id="@+id/btnAddEvent"
             android:layout_width="match_parent"

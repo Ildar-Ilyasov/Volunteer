@@ -7,7 +7,6 @@
     android:paddingBottom="0dp"
     android:background="#FFFFFF">
 
-    <!-- Фото профиля -->
     <ImageView
         android:id="@+id/profile_image"
         android:layout_width="100dp"
@@ -16,9 +15,7 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/icon_application"
         android:scaleType="centerCrop"
-        android:contentDescription="Profile image"/>
-
-    <!-- Имя пользователя -->
+        android:contentDescription="Profile image"/>>
 
     <ImageButton
         android:id="@+id/btnEditProfile"
@@ -43,7 +40,6 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="8dp"/>
 
-    <!-- Логин -->
     <TextView
         android:id="@+id/tv_login"
         android:layout_width="wrap_content"
@@ -53,7 +49,6 @@
         android:layout_below="@id/tv_name"
         android:layout_centerHorizontal="true"/>
 
-    <!-- Блок информации -->
     <TextView
         android:id="@+id/tv_info_title"
         android:layout_width="wrap_content"
@@ -85,7 +80,6 @@
         android:layout_below="@id/tv_dob"
         android:layout_alignParentStart="true"/>
 
-    <!-- Блок контактов -->
     <TextView
         android:id="@+id/tv_contacts_title"
         android:layout_width="wrap_content"
@@ -107,7 +101,6 @@
         android:layout_below="@id/tv_contacts_title"
         android:layout_alignParentStart="true"/>
 
-    <!-- Блок "Ваши мероприятия" -->
     <TextView
         android:id="@+id/tvEventsTitle"
         android:layout_width="wrap_content"
@@ -120,7 +113,6 @@
         android:layout_marginTop="24dp"
         android:layout_alignParentStart="true"/>
 
-    <!-- Список мероприятий -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewUserEvents"
         android:layout_width="match_parent"

@@ -67,7 +67,7 @@ public class AdminPanelFragment extends Fragment {
     }
 
     private void showManage(String category) {
-        currentCategory = category; // запоминаем выбранную категорию
+        currentCategory = category;
         btnAdd.setVisibility(View.VISIBLE);
         itemListContainer.removeAllViews();
 

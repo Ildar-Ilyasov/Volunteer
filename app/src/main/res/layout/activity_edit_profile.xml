@@ -4,7 +4,6 @@
     android:padding="16dp"
     android:orientation="vertical">
 
-    <!-- Кнопка назад -->
     <ImageButton
         android:id="@+id/icon_back"
         android:layout_width="wrap_content"
@@ -14,7 +13,6 @@
         android:background="?android:attr/selectableItemBackgroundBorderless"
         android:layout_marginBottom="16dp" />
 
-    <!-- Подпись для имени -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,7 +27,6 @@
         android:layout_height="wrap_content"
         android:hint="Введите имя" />
 
-    <!-- Подпись для фамилии -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,7 +41,6 @@
         android:layout_height="wrap_content"
         android:hint="Введите фамилию" />
 
-    <!-- Подпись для даты рождения -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -61,7 +57,6 @@
         android:focusable="false"
         android:clickable="true" />
 
-    <!-- Подпись для email -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,7 +71,6 @@
         android:layout_height="wrap_content"
         android:hint="Введите email" />
 
-    <!-- Кнопка сохранить -->
     <Button
         android:id="@+id/btnSave"
         android:layout_width="match_parent"

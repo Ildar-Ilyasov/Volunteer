@@ -53,10 +53,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(news));
     }
 
-
-
-
-
     @Override
     public int getItemCount() {
         return newsList.size();

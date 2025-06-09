@@ -6,7 +6,7 @@ public class Message {
     private String text;
     private long timestamp;
 
-    public Message() {} // для Firebase
+    public Message() {}
 
     public Message(String userId, String text, long timestamp) {
         this.userId = userId;

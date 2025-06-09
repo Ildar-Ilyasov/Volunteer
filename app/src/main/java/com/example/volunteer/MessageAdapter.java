@@ -41,7 +41,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         String formattedTime = sdf.format(new Date(message.getTimestamp()));
         holder.tvTimestamp.setText(formattedTime);
 
-        // Сравнение по userId
         if (message.getUserId().equals(currentUserId)) {
             holder.itemView.setBackgroundResource(R.drawable.border_green);
         } else {

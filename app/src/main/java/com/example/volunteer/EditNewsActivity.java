@@ -26,27 +26,23 @@ public class EditNewsActivity extends AppCompatActivity {
         ImageButton btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> onBackPressed());
 
-        // Инициализация полей
         editTitle = findViewById(R.id.editNewsTitle);
         editContent = findViewById(R.id.editNewsContent);
         editImageUrl = findViewById(R.id.editNewsImageUrl);
         editPublicationDate = findViewById(R.id.editNewsDate);
         btnSave = findViewById(R.id.btnSaveNews);
 
-        // Получение данных из Intent
         newsId = getIntent().getStringExtra("newsId");
         String title = getIntent().getStringExtra("newsTitle");
         String content = getIntent().getStringExtra("newsContent");
         String imageUrl = getIntent().getStringExtra("newsImageUrl");
         String publicationDate = getIntent().getStringExtra("newsDate");
 
-        // Установка данных в поля
         editTitle.setText(title);
         editContent.setText(content);
         editImageUrl.setText(imageUrl);
         editPublicationDate.setText(publicationDate);
 
-        // Сохранение обновлений
         btnSave.setOnClickListener(v -> {
             String updatedTitle = editTitle.getText().toString().trim();
             String updatedContent = editContent.getText().toString().trim();

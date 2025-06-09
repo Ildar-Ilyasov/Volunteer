@@ -10,7 +10,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Название мероприятия -->
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
@@ -20,7 +19,6 @@
             android:textStyle="bold"
             android:textColor="@color/orange"/>
 
-        <!-- Дата мероприятия -->
         <TextView
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
@@ -30,7 +28,6 @@
             android:textColor="@color/black"
             android:layout_marginTop="8dp"/>
 
-        <!-- Описание мероприятия -->
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="wrap_content"
@@ -40,7 +37,6 @@
             android:textColor="@color/black"
             android:layout_marginTop="16dp"/>
 
-        <!-- Место проведения -->
         <TextView
             android:id="@+id/tvLocation"
             android:layout_width="wrap_content"
@@ -50,7 +46,6 @@
             android:textColor="@color/black"
             android:layout_marginTop="16dp"/>
 
-        <!-- Организатор -->
         <TextView
             android:id="@+id/tvOrganizer"
             android:layout_width="wrap_content"
@@ -60,7 +55,6 @@
             android:textColor="@color/black"
             android:layout_marginTop="16dp"/>
 
-        <!-- Кнопка "Участвовать" -->
         <Button
             android:id="@+id/btnParticipate"
             android:layout_width="wrap_content"
@@ -69,7 +63,7 @@
             android:background="@drawable/rounded_button"
             android:textColor="@color/white"
             android:layout_marginTop="24dp"
-            android:layout_gravity="center"/> <!-- Центрирование только кнопки -->
+            android:layout_gravity="center"/>
 
         <Button
             android:id="@+id/btnOpenChat"

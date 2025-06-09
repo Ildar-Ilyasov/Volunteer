@@ -45,7 +45,6 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        // Инициализация элементов
         tvName = view.findViewById(R.id.tv_name);
         tvLogin = view.findViewById(R.id.tv_login);
         tvDob = view.findViewById(R.id.tv_dob);
@@ -55,27 +54,23 @@ public class ProfileFragment extends Fragment {
         ImageButton btnEditProfile = view.findViewById(R.id.btnEditProfile);
         profileImage = view.findViewById(R.id.profile_image);
 
-        // Установка временных значений
         tvName.setText("Загружается...");
         tvLogin.setText("Загружается...");
         tvDob.setText("Загружается...");
         tvRegistrationDate.setText("Загружается...");
         tvEmail.setText("Загружается...");
 
-        // Настройка RecyclerView
         recyclerViewUserEvents.setLayoutManager(new LinearLayoutManager(getContext()));
         userEventList = new ArrayList<>();
         userEventAdapter = new EventAdapter(userEventList, getContext(), userId, false);
         recyclerViewUserEvents.setAdapter(userEventAdapter);
 
-        // Получение userId
         userId = getArguments() != null ? getArguments().getString("userId") : null;
 
         if (userId != null) {
             userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
             userEventsRef = FirebaseDatabase.getInstance().getReference("user_events").child(userId);
 
-            // Теперь можно создать адаптер, потому что userId уже известен
             userEventAdapter = new EventAdapter(userEventList, getContext(), userId, false);
             recyclerViewUserEvents.setAdapter(userEventAdapter);
 
@@ -83,7 +78,6 @@ public class ProfileFragment extends Fragment {
             loadUserEvents();
         }
 
-        // Обработчик кнопки редактирования
         btnEditProfile.setOnClickListener(v -> {
             if (userId != null) {
                 Intent intent = new Intent(getActivity(), EditProfileActivity.class);
@@ -92,7 +86,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        // Обработчик клика на аватарку
         profileImage.setOnClickListener(v -> openImageChooser());
 
         return view;
@@ -119,7 +112,6 @@ public class ProfileFragment extends Fragment {
                         tvRegistrationDate.setText("Дата регистрации: " + user.getRegistrationDate());
                         tvEmail.setText("Email: " + user.getEmail());
 
-                        // Загрузка аватарки (если есть)
                         if (user.getProfileImageBase64() != null && !user.getProfileImageBase64().isEmpty()) {
                             byte[] decodedBytes = Base64.decode(user.getProfileImageBase64(), Base64.DEFAULT);
                             Bitmap bitmap = BitmapFactory.decodeByteArray(decodedBytes, 0, decodedBytes.length);
@@ -177,7 +169,6 @@ public class ProfileFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Обработка редактирования профиля
         if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
             String firstName = data.getStringExtra("firstName");
             String lastName = data.getStringExtra("lastName");
@@ -189,7 +180,6 @@ public class ProfileFragment extends Fragment {
             tvEmail.setText("Email: " + email);
         }
 
-        // Обработка выбора изображения
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.getData() != null) {
             Uri imageUri = data.getData();
             try {
@@ -197,7 +187,6 @@ public class ProfileFragment extends Fragment {
                 Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
                 profileImage.setImageBitmap(bitmap);
 
-                // Конвертация в Base64 и сохранение
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 50, baos); // Сжатие до 50%
                 String base64Image = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT);

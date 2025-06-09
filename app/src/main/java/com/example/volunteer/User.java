@@ -13,7 +13,7 @@ public class User {
     private String login;
     private String password;
     private String registrationDate;
-    private String profileImageBase64;  // Новое поле для хранения аватарки в Base64
+    private String profileImageBase64;
 
     public User() {
     }
@@ -85,7 +85,6 @@ public class User {
         this.registrationDate = registrationDate;
     }
 
-    // Новый геттер и сеттер для аватарки
     public String getProfileImageBase64() {
         return profileImageBase64;
     }
